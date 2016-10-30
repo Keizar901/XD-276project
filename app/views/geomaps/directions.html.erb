@@ -6,8 +6,16 @@
 <div style='width: 800px;'>
     <div id="directions" style='width: 800px; height: 400px;'></div>
 </div>
-<p id="test"></p>
 
+<% response = Yelp.client.search('Coquitlam') %>
+<% @name = response.businesses[0].name %>
+ <%   @lat = response.businesses[0].location.coordinate.latitude %>
+  <%  @long = response.businesses[0].location.coordinate.longitude%>
+
+
+<p id="test">
+  Your Restaurant is <%= @name %>
+</p>
 <!-- This script gives us directions, the origin and destination is hard coded currently but I think we can get the lat and long from the yelp API -->
 
 <script type="text/javascript">
@@ -16,6 +24,8 @@ var directionsService = new google.maps.DirectionsService();
 var x = document.getElementById("test");
 var lat;
 var long;
+var destlat = <%= @lat %>;
+var destlong = <%= @long %>;
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -28,7 +38,7 @@ function getLocation() {
 
 function calcRoute(position) {
   var origin      = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-  var destination = new google.maps.LatLng(49.264187, -122.886235);
+  var destination = new google.maps.LatLng(destlat, destlong);
 
   var request = {
       origin:      origin,

@@ -7,6 +7,9 @@ class GeomapsController < ApplicationController
   end
 
   def directions
-  	#render json: Yelp.client.search('Coquitlam')
+  #	response = Yelp.client.search('Coquitlam')
+  #	@lat = response.businesses[0].name
+  #	@lat = response.businesses[0].locaton.coordinate.latutude
+  #	@long = response.businesses[0].locaton.coordinate.longitude
   end
 end
