@@ -6,12 +6,13 @@
 <div style='width: 800px;'>
     <div id="directions" style='width: 800px; height: 400px;'></div>
 </div>
-
 <% response = Yelp.client.search('Coquitlam') %>
-<% @name = response.businesses[0].name %>
- <%   @lat = response.businesses[0].location.coordinate.latitude %>
-  <%  @long = response.businesses[0].location.coordinate.longitude%>
-
+<% @num = response.businesses.length %>
+<% @rand = Random.new.rand(1..@num) %>
+<% @name = response.businesses[@rand].name %>
+ <%   @lat = response.businesses[@rand].location.coordinate.latitude %>
+  <%  @long = response.businesses[@rand].location.coordinate.longitude%>
+<%= @num %>
 
 <p id="test">
   Your Restaurant is <%= @name %>
@@ -38,6 +39,7 @@ function getLocation() {
 
 function calcRoute(position) {
   var origin      = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+
   var destination = new google.maps.LatLng(destlat, destlong);
 
   var request = {
