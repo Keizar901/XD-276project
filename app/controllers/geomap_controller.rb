@@ -7,5 +7,6 @@ class GeomapController < ApplicationController
   end
 
   def directions
+  	#render json: Yelp.client.search('Coquitlam')
   end
 end
