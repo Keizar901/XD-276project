@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   def index
   end
 
@@ -6,6 +6,7 @@ class UserController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
