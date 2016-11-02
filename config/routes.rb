@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'random/index'
+
   # get 'user/index'
 
   # get 'user/show'
