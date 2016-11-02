@@ -1,0 +1,5 @@
+<%= link_to 'Random Again', action: 'index' %>
+<% bus = @results.businesses[0] %>
+<h3><%= bus.name %></h3>
+<p><%= image_tag bus.image_url %></p>
+<p>distance: <%= (bus.distance / 1000).round(1) %> km</p>

@@ -1,28 +1,38 @@
-
-<p>distance:
-  <select>
-    <option value="5">5</option>
-    <option value="10">10</option>
-    <option value="20">20</option>
-  </select>
-  km
-</p>
-
-
-
+<%= form_tag random_search_path do %>
+  <p><%= select_tag(:distance, options_for_select([['5', 400], ['15', 1200], ['30', 2400]])) %> minutes of walking</p>
+  <%= submit_tag 'Random' %>
+<% end %>
 
 
 <script type="text/javascript">
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    alert("Geolocation is not supported by this browser.");
-  }
-}
-function showPosition(position) {
-  var lat = position.coords.latitude;
-  var lng = position.coords.longitude;
 
-}
+  // getLocation - uses geolocation to obtain user location
+  function getLocation()
+  {
+    if (navigator.geolocation)
+    {
+      navigator.geolocation.getCurrentPosition(setGeoCookie, handleError);
+    }
+    else
+    {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  // setGeoCookie - creates a cookie to store user location
+  function setGeoCookie(position)
+  {
+    var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+    document.cookie = "lat_lng=" + escape(cookie_val);
+  }
+
+  // handleError - gets called when geolocation permission is denied by user
+  function handleError(err)
+  {
+    // err.code: 1 = permission denied, 2 = pos unavailable, 3 = timeout
+    alert("location unavailable");
+  }
+
+  // Ask for user location
+  getLocation();
 </script>
