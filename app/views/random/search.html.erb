@@ -1,8 +1,9 @@
 <div class="container">
-
-  <ul class="pager">
-    <li class="previous"><%= link_to 'Back', random_index_path, class: "btn btn-default" %></li>
-  </ul>
+  
+  <h4>
+    <%= link_to 'edit', random_index_path, class: "btn btn-default" %>
+    <span class="label label-info"><%= @distance %> m</span>
+  </h4>
 
   <div class="text-center">
     <p class="lead">Your destination is ... </p>

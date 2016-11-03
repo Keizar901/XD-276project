@@ -1,3 +1,4 @@
+
 <div class="contrainer">
   <%= form_tag random_search_path, class: "form-inline" do %>
     <div class="form-group">
@@ -11,35 +12,29 @@
   <% end %>
 </div>
 
-
 <script type="text/javascript">
-// getLocation - uses geolocation to obtain user location
-function getLocation()
-{
-  if (navigator.geolocation)
+
+  // getLocation - uses geolocation to obtain user location
+  function getLocation()
   {
-    navigator.geolocation.getCurrentPosition(setGeoCookie, handleError);
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(setGeoCookie, handleError);
+    else
+      alert("Geolocation is not supported by this browser.");
   }
-  else
+
+  // setGeoCookie - creates a cookie to store user location
+  function setGeoCookie(position)
   {
-    alert("Geolocation is not supported by this browser.");
+    var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+    document.cookie = "lat_lng=" + escape(cookie_val);
   }
-}
 
-// setGeoCookie - creates a cookie to store user location
-function setGeoCookie(position)
-{
-  var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
-  document.cookie = "lat_lng=" + escape(cookie_val);
-}
+  // handleError - gets called when geolocation permission is denied by user
+  function handleError(err)
+  {
+    alert("location unavailable"); // err.code: 1 = permission denied, 2 = pos unavailable, 3 = timeout
+  }
 
-// handleError - gets called when geolocation permission is denied by user
-function handleError(err)
-{
-  // err.code: 1 = permission denied, 2 = pos unavailable, 3 = timeout
-  alert("location unavailable");
-}
-
-// Ask for user location
-getLocation();
+  getLocation(); // Ask for user location
 </script>
