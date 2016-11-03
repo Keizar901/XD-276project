@@ -14,3 +14,24 @@ To accomplish this project, we are going to have to utilize a number of APIs fro
 
 By creating Rand & Run, we are looking to attract users by being simple to use with sleek, minimalistic UI. Although there are many restaurant finders out there, Rand & Run is unique with its location based gameplay implementation, and we hope that we can make Friday nights a little more fun for everyone with a fun way of solving a common problem.
 
+# User stories:
+## Account system:
+*   Account system
+    *   []  As a user, I can sign up with my email. 
+        *   [] If user input the wrong format of email, there will be a specific error message to ask them to type again 
+        *   [] Confirmation of the account password. If it doesn't match the password, there will be a specific error message to ask them to type again
+        *   [] The password should have a minimal length of 6. If user input a password with length less than 6, there will be a specific error message to ask them to type again
+        *   [] If the email or account name is already exist, there will be a specific error message to ask them to type again
+            *  [] **optional** test the user name exists or not
+        *   [] **optinoal** The user sign up successfully will receive a activation email to activate the account
+    *   []  As a user with an account, I can log in with the correct email and password.
+        *   [] If the email or password doesn't match, there will be a specific error message to ask them to type again
+        *   [] If user input the wrong format of email, there will be a specific error message to ask them to type again 
+        *   [] The password should have a minimal length of 6. If user input a password with length less than 6, there will be a specific error message to ask them to type again
+    *   []  As a user, I can change my password when I forget my password
+        *   []  Send a change password link to the user email when user forget the password. 
+        *   []  **Optional** What if users forget their account(email)
+    *   []  Use cookies to remember user's email so they don't have to type it every time
+        *   []  Provide a "remember my account" checkbox option in the log in page
+        
+
