@@ -1,5 +1,24 @@
-<%= link_to 'Random Again', action: 'index' %>
-<% bus = @results.businesses[0] %>
-<h3><%= bus.name %></h3>
-<p><%= image_tag bus.image_url %></p>
-<p>distance: <%= (bus.distance / 1000).round(1) %> km</p>
+<div class="container">
+
+  <ul class="pager">
+    <li class="previous"><%= link_to 'Back', random_index_path, class: "btn btn-default" %></li>
+  </ul>
+
+  <div class="text-center">
+    <p class="lead">Your location is ... </p>
+    <h1><%= @name %></h1>
+    <% if (@img_url) %>
+    <p> <%= image_tag @img_url, class: "img-thumbnail" %> </p>
+    <% else %>
+    <p><%= image_tag @img_placeholder, class: "img-thumbnail" %></p>
+    <% end %>
+
+    <br>
+
+    <%= link_to random_search_path( distance: @distance ), class: "btn btn-primary" do %>
+      <span class="glyphicon glyphicon-refresh"></span>
+    <% end %>
+    <%= link_to 'Accept Challenge', random_index_path, class: "btn btn-success" %>
+  </div>
+
+</div>

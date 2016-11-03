@@ -1,4 +1,6 @@
 class RandomController < ApplicationController
+
+
   def index
 
   end
@@ -10,14 +12,18 @@ class RandomController < ApplicationController
                             token_secret: 's8SSdbNje6DN5Q4EfAtM7YgRye4'
                           })
     @distance = params[:distance]
-    @lat_lng = cookies[:lat_lng].split("|")
+    lat_lng = cookies[:lat_lng].split("|")
 
-    pref = {
-      term: 'restaurants',
-      radius: @distance
-    }
-    coordinates = { latitude: @lat_lng[0], longitude: @lat_lng[1] }
+    pref = { term: 'restaurants', radius_filter: @distance }
+    coordinates = { latitude: lat_lng[0], longitude: lat_lng[1] }
+    results = client.search_by_coordinates(coordinates, pref)
 
-    @results = client.search_by_coordinates(coordinates, pref);
+    buses = results.businesses
+    index = Random.rand(0...buses.size)
+    bus = buses[index]
+    @name = bus.name
+    @img_url = bus.image_url
+    @img_placeholder = 'http://bit.ly/2fkkakw'
+
   end
 end
