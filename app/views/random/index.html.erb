@@ -1,15 +1,21 @@
 
 <div class="contrainer">
+
+  <% if @err_msg %>
+    <div class="alert alert-danger" role="alert"><%= @err_msg %></div>
+  <% end %>
+
   <%= form_tag random_search_path, class: "form-inline" do %>
     <div class="form-group">
       <label>How many minutes do you want to walk?</label>
       <%= select_tag :distance,
-       options_for_select([['10', 800], ['20', 1600],['30', 2400]]),
+       options_for_select([['10', 800], ['20', 1600], ['30', 2400], ['60', 4800]]),
        class: "form-control" %>
     </div>
 
     <%= submit_tag 'Random', class: "btn btn-primary" %>
   <% end %>
+
 </div>
 
 <script type="text/javascript">
