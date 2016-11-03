@@ -1,0 +1,25 @@
+<div class="container">
+  
+  <h4>
+    <%= link_to 'edit', random_index_path, class: "btn btn-default" %>
+    <span class="label label-info"><%= @distance %> m</span>
+  </h4>
+
+  <div class="text-center">
+    <p class="lead">Your destination is ... </p>
+    <h1><%= @name %></h1>
+    <% if (@img_url) %>
+    <p> <%= image_tag @img_url, class: "img-thumbnail" %> </p>
+    <% else %>
+    <p><%= image_tag @img_placeholder, class: "img-thumbnail" %></p>
+    <% end %>
+
+    <br>
+
+    <%= link_to random_search_path( distance: @distance ), class: "btn btn-primary" do %>
+      <span class="glyphicon glyphicon-refresh"></span>
+    <% end %>
+    <%= link_to 'Accept Challenge', random_index_path, class: "btn btn-success" %>
+  </div>
+
+</div>

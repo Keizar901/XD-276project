@@ -1,0 +1,40 @@
+
+<div class="contrainer">
+  <%= form_tag random_search_path, class: "form-inline" do %>
+    <div class="form-group">
+      <label>How many minutes do you want to walk?</label>
+      <%= select_tag :distance,
+       options_for_select([['10', 800], ['20', 1600],['30', 2400]]),
+       class: "form-control" %>
+    </div>
+
+    <%= submit_tag 'Random', class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+
+  // getLocation - uses geolocation to obtain user location
+  function getLocation()
+  {
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(setGeoCookie, handleError);
+    else
+      alert("Geolocation is not supported by this browser.");
+  }
+
+  // setGeoCookie - creates a cookie to store user location
+  function setGeoCookie(position)
+  {
+    var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+    document.cookie = "lat_lng=" + escape(cookie_val);
+  }
+
+  // handleError - gets called when geolocation permission is denied by user
+  function handleError(err)
+  {
+    alert("location unavailable"); // err.code: 1 = permission denied, 2 = pos unavailable, 3 = timeout
+  }
+
+  getLocation(); // Ask for user location
+</script>
