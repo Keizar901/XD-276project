@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class GeomapControllerTest < ActionDispatch::IntegrationTest
+class RandomControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get geomap_index_url
+    get random_index_url
     assert_response :success
   end
 
