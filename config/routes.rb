@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'random/search'
   post 'random/search'
+  get 'random/accept'
 
   # get 'user/index'
 

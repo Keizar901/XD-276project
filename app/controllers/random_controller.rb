@@ -50,4 +50,31 @@ class RandomController < ApplicationController
 
       end
     end
+
+    def accept
+
+      # if location unavailable, redirect to index
+      if cookies[:lat_lng] == nil
+        redirect_to random_index_path(lonotfound: true)
+      else
+        lat_lng = cookies[:lat_lng].split("|")
+
+        @user_lat = lat_lng[0]
+        @user_lng = lat_lng[1]
+      end
+
+      @destlat = params[:destlat]
+      @destlong = params[:destlong]
+      @img_url = params[:imgurl]
+      @img_placeholder = 'http://bit.ly/2fkkakw'
+      @name = params[:name]
+
+
+
+      if params[:notatdest]
+      @err_msg = "You are not at the destination"
+      end
+
+    end
+    helper_method :distance_between
   end
