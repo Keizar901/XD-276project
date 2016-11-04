@@ -4,7 +4,7 @@ class RandomController < ApplicationController
     if params[:busnotfound]
       @err_msg = "Oops, there is no restaurants around you"
     elsif params[:lonotfound]
-      @err_msg = "Your location is not avaiable"
+      @err_msg = "Your location is not available"
     end
   end
 
