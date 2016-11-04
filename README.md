@@ -34,4 +34,10 @@ By creating Rand & Run, we are looking to attract users by being simple to use w
     *   []  Use cookies to remember user's email so they don't have to type it every time
         *   []  Provide a "remember my account" checkbox option in the log in page
         
+## Restaurant Finder
+    * As a user, I can select a range for how far the restaurants should be
+    * I will then be presented with the name and photo of a random restaurant, along with a map containing directions
+    * I will be able to accept the challenge
+    * I can also refresh the page to get different restaurants
+    * I can go back and edit the range
 
