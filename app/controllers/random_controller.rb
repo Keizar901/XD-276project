@@ -2,9 +2,9 @@ class RandomController < ApplicationController
 
   def index
     if params[:busnotfound]
-      @err_msg = "Sorry, there is no restaurants around you"
+      @err_msg = "Oops, there is no restaurants around you"
     elsif params[:lonotfound]
-      @err_msg = "Sorry, your location is not avaiable"
+      @err_msg = "Your location is not avaiable"
     end
   end
 

@@ -2,7 +2,10 @@
 <div class="contrainer">
 
   <% if @err_msg %>
-    <div class="alert alert-danger" role="alert"><%= @err_msg %></div>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <%= @err_msg %>
+    </div>
   <% end %>
 
   <%= form_tag random_search_path, class: "form-inline" do %>
