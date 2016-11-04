@@ -5,13 +5,15 @@
   <div class="row">
     <div class="col-xs-6 text-left">
       <h4>
-        <%= link_to 'edit', random_index_path, class: "btn btn-default" %>
+        <%= link_to 'edit', random_index_path,
+        class: "btn btn-default" %>
         <span class="label label-info"><%= @distance %> m</span>
       </h4>
     </div>
     <div class="col-xs-6 text-right">
       <h4>
-        <%= link_to random_index_path, class: "btn btn-success" do %>
+        <%= link_to random_accept_path(:destlat => @bus_lat, :destlong => @bus_lng, :name => @name, 
+        :imgurl => @img_url), class: "btn btn-success" do %>
            Accept Challenge <span class="glyphicon glyphicon-ok"></span>
         <% end %>
       </h4>
@@ -32,7 +34,7 @@
     <br>
 
     <div class="col-md-6">
-      <p class="lead">Your destination is ... </p>
+      <p class="lead">Your destination is ... <%= @bus_lat %><%= @bus_lng %></p>
       <h1><%= @name %></h1>
       <% if (@img_url) %>
       <p> <%= image_tag @img_url, class: "img-thumbnail" %> </p>
