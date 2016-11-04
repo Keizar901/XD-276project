@@ -1,7 +1,6 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
-
-
-
+<p><%= @user_lat %>
+<%= @user_lng %></p>
 <div class="col-md-6">
       <p class="lead">Your destination is ... </p>
       <h1><%= @name %></h1>
@@ -10,11 +9,18 @@
       <% else %>
       <p><%= image_tag @img_placeholder, class: "img-thumbnail" %></p>
       <% end %>
-      <p class="lead" id="confirm">test</p>
-    </div>
+      
+
+      <p class="lead" id="confirm"></p>
+
+      <a id="refresh" href="javascript:history.go(0)" class="btn btn-info" role="button">Refresh <span class="glyphicon glyphicon-refresh"></span></a>
+
+      <button id = "success" type="button" class="btn btn-success">Check In <span class="glyphicon glyphicon-ok"></span></button>
+</div>
+
 
 <script>
-
+document.getElementById("success").style.display="none";
 var ulat = <%= @user_lat %>;
 var ulng = <%= @user_lng %>;
 var dlat = <%= @destlat %>;
@@ -24,8 +30,11 @@ var p1 = new google.maps.LatLng(ulat, ulng);
 var p2 = new google.maps.LatLng(dlat, dlong);
 
 var d = calcDistance(p1, p2);
+
 if(d <0.1){
 	document.getElementById("confirm").innerHTML = "You are at the destination!";
+	document.getElementById("refresh").style.display="none";
+	document.getElementById("success").style.display="block";
 }else{
 	document.getElementById("confirm").innerHTML = "You are not currently at the destination";
 }
@@ -37,4 +46,35 @@ function calcDistance(p1, p2) {
 
 </script>
 
-<p id="test"></p>
+
+<!-- User Location -->
+<script type="text/javascript">
+
+  // getLocation - uses geolocation to obtain user location
+  function getLocation()
+  {
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(setGeoCookie, handleError);
+    else
+      alert("Geolocation is not supported by this browser.");
+  }
+
+  // setGeoCookie - creates a cookie to store user location
+  function setGeoCookie(position)
+  {
+    var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+    document.cookie = "lat_lng=" + escape(cookie_val);
+  }
+
+  // handleError - gets called when geolocation permission is denied by user
+  function handleError(err)
+  {
+     // err.code: 1 = permission denied, 2 = pos unavailable, 3 = timeout
+  }
+
+  getLocation(); // Ask for user location
+</script>
+
+
+
+
