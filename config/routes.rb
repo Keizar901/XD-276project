@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   
   get 'geomaps/index'
   get 'geomaps/directions'
-  root 'geomaps#index'
+  root 'random#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

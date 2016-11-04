@@ -14,8 +14,8 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-# default: &default
-#   adapter: postgresql
+default: &default
+  adapter: postgresql
 #
 #   # encoding: unicode
 #   # # For details on connection pooling, see rails configuration guide
@@ -25,26 +25,26 @@
 #   # user: groupxd
 #   # password: 276
 #
-#   #Andy setting in c9 enviorment
-#   encoding: SQL_ASCII
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   username: ubuntu
-#   password: 276
-#   host:     <%= ENV['IP'] %>
-#
+  #Andy setting in c9 enviorment
+  encoding: SQL_ASCII
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: ubuntu
+  password: 276
+  host:     <%= ENV['IP'] %>
+
 # development:
 #   <<: *default
 #   database: XD-276project_development
 
   # James
-  default: &default
-    adapter: postgresql
-    encoding: unicode
-    pool: 5
+  # default: &default
+  #   adapter: postgresql
+  #   encoding: unicode
+  #   pool: 5
 
-  development:
-    <<: *default
-    database: XD-276project_development
+development:
+  <<: *default
+  database: XD-276project_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
