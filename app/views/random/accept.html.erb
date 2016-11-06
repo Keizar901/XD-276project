@@ -2,7 +2,7 @@
 <script src="//maps.google.com/maps/api/js?key=AIzaSyBqCYFsvqoNiLgEDx1k0z7x7FNEaeThT3c"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 
-
+<!-- Display -->
 <div class="col-md-6">
       <p class="lead">You have accepted the challenge at: </p>
       <h1><%= @name %></h1>
@@ -15,8 +15,8 @@
       <p class="lead" id="confirm"></p>
 
       <button id = "success" type="button" class="btn btn-success">Check In <span class="glyphicon glyphicon-ok"></span></button>
-
 </div>
+
 
 <div class="col-md-6">
       <!-- Map -->
@@ -26,7 +26,7 @@
 </div>
 
 
-<!-- User Location -->
+<!--User Location -->
 <script type="text/javascript">
 
   // getLocation - uses geolocation to obtain user location
@@ -67,20 +67,20 @@ var p1 = new google.maps.LatLng(ulat, ulng);
 var p2 = new google.maps.LatLng(dlat,dlong);
 
 var d = calcDistance(p1, p2);
-alert(d);
 
 
-if(d <= 0.1){
-	document.getElementById("confirm").innerHTML = "You are at the destination!";
-	document.getElementById("success").style.display="block";
-}else{
-	document.getElementById("confirm").innerHTML = "You are not currently at the destination";
-}
+	if(d <= 0.1){
+		document.getElementById("confirm").innerHTML = "You are at the destination!";
+		document.getElementById("success").style.display="block";
+	}else{
+		document.getElementById("confirm").innerHTML = "You are currently "+ d +"km from the destination";
+	}
 
 //calculates distance between two points in km's
-function calcDistance(p1, p2) {
-  return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
-}
+	function calcDistance(p1, p2) {
+ 	 return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+	}
+
 </script>
 
 
