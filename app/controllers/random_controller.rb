@@ -1,8 +1,10 @@
 class RandomController < ApplicationController
 
   def index
-    if params[:notfound]
-      @err_msg = "Sorry, there is no restaurants around you"
+    if params[:busnotfound]
+      @err_msg = "Oops, there is no restaurants around you"
+    elsif params[:lonotfound]
+      @err_msg = "Your location is not available"
     end
   end
 
@@ -19,27 +21,34 @@ class RandomController < ApplicationController
       else
         @distance = cookies[:distance]
       end
-      
-      lat_lng = cookies[:lat_lng].split("|")
-      @user_lat = lat_lng[0]
-      @user_lng = lat_lng[1]
-      pref = { term: 'restaurants', radius_filter: @distance }
-      coordinates = { latitude: @user_lat, longitude: @user_lng }
-      results = client.search_by_coordinates(coordinates, pref)
-      buses = results.businesses
 
-      if buses.size > 0
-        index = Random.rand(0...buses.size)
-        bus = buses[index]
-        @name = bus.name
-        @bus_lat = bus.location.coordinate.latitude
-        @bus_lng = bus.location.coordinate.longitude
-        @img_url = bus.image_url
-        @img_placeholder = 'http://bit.ly/2fkkakw'
+      # if location unavailable, redirect to index
+      if cookies[:lat_lng] == nil
+        redirect_to random_index_path(lonotfound: true)
       else
-        redirect_to random_index_path(notfound: true)
+        lat_lng = cookies[:lat_lng].split("|")
+
+        @user_lat = lat_lng[0]
+        @user_lng = lat_lng[1]
+        pref = { term: 'restaurants', radius_filter: @distance }
+        coordinates = { latitude: @user_lat, longitude: @user_lng }
+        results = client.search_by_coordinates(coordinates, pref)
+        buses = results.businesses
+
+        # if there's no businesses near user, redirect to index
+        if buses.size == 0
+          redirect_to random_index_path(busnotfound: true)
+        else
+          index = Random.rand(0...buses.size)
+          bus = buses[index]
+          @name = bus.name
+          @bus_lat = bus.location.coordinate.latitude
+          @bus_lng = bus.location.coordinate.longitude
+          @img_url = bus.image_url
+          @img_placeholder = 'http://bit.ly/2fkkakw'
+        end
+
       end
-
-
     end
   end
+
