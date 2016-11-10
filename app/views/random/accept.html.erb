@@ -1,5 +1,4 @@
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
-<script src="//maps.google.com/maps/api/js?key=AIzaSyBqCYFsvqoNiLgEDx1k0z7x7FNEaeThT3c"></script>
+<script src="//maps.google.com/maps/api/js?key=AIzaSyBqCYFsvqoNiLgEDx1k0z7x7FNEaeThT3c&lsensor=false&libraries=geometry"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 
 <!-- Display -->
@@ -13,7 +12,7 @@
       <% end %>
 
       <p class="lead" id="confirm"></p>
-
+      
       <button id = "success" type="button" class="btn btn-success">Check In <span class="glyphicon glyphicon-ok"></span></button>
 </div>
 
@@ -57,7 +56,7 @@
 
 <!-- Distance Calc -->
 <script>
-
+document.getElementById("success").style.display="none";
 var ulat = <%= @user_lat %>;
 var ulng = <%= @user_lng %>;
 var dlat = <%= @destlat %>;
@@ -69,7 +68,7 @@ var p2 = new google.maps.LatLng(dlat,dlong);
 var d = calcDistance(p1, p2);
 
 
-	if(d <= 0.1){
+	if(d <= 100){
 		document.getElementById("confirm").innerHTML = "You are at the destination!";
 		document.getElementById("success").style.display="block";
 	}else{
