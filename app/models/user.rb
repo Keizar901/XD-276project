@@ -9,5 +9,10 @@ class User < ApplicationRecord
 	  					uniqueness: { case_sensitive: false }
 	validates :password, presence: true, length: { minimum: 6 }
 	has_secure_password
+	
+	after_initialize :init_config
+	def init_config
+      self.point  ||= 0          #will set the default value of point only if it's nil
+    end
 
 end
