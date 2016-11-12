@@ -1,2 +1,9 @@
 <h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<% provide(:title, @user.fname) %>
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.fname %>
+</h1>
+
+<%= @user.fname %>, <%= @user.email %>, <%= current_user.point %>
+

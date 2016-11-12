@@ -1,0 +1,50 @@
+<% provide(:title, "RestaRun") %>
+<div class="contrainer">
+
+  <% if @err_msg %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <%= @err_msg %>
+    </div>
+  <% end %>
+
+  <%= form_tag random_search_path, class: "form-inline" do %>
+    <div class="form-group">
+     <label>Welcome to the RestaRun App!</label><br>
+      <label>How many minutes do you want to walk?</label>
+      <%= select_tag :distance,
+       options_for_select([['10', 800], ['20', 1600], ['30', 2400], ['60', 4800]]),
+       class: "form-control" %>
+    
+
+    <%= submit_tag 'Random', class: "btn btn-primary" %>
+  <% end %>
+</div>
+</div>
+
+<script type="text/javascript">
+
+  // getLocation - uses geolocation to obtain user location
+  function getLocation()
+  {
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(setGeoCookie, handleError);
+    else
+      alert("Geolocation is not supported by this browser.");
+  }
+
+  // setGeoCookie - creates a cookie to store user location
+  function setGeoCookie(position)
+  {
+    var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+    document.cookie = "lat_lng=" + escape(cookie_val);
+  }
+
+  // handleError - gets called when geolocation permission is denied by user
+  function handleError(err)
+  {
+     // err.code: 1 = permission denied, 2 = pos unavailable, 3 = timeout
+  }
+
+  getLocation(); // Ask for user location
+</script>

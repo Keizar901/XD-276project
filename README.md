@@ -1,3 +1,4 @@
+
 # XD-276project
 # Rand & Run
 ## Project Proposal
@@ -34,4 +35,14 @@ By creating Rand & Run, we are looking to attract users by being simple to use w
     *   []  Use cookies to remember user's email so they don't have to type it every time
         *   []  Provide a "remember my account" checkbox option in the log in page
         
+JS gmaps bug:
+website:
+https://restarun.herokuapp.com/random/search
+check the bug in chrome devtool
 
+http://stackoverflow.com/questions/35902500/uncaught-referenceerror-gmaps-is-not-defined-rails-4
+http://stackoverflow.com/questions/2464595/including-inline-javascript-using-content-for-in-rails
+https://github.com/JonKernPA/gmaps_zurb/blob/master/README.md
+
+this one is in haml
+https://github.com/apneadiving/Google-Maps-for-Rails/wiki/Gmaps-is-not-defined

@@ -1,25 +1,29 @@
 Rails.application.routes.draw do
-  # get 'user/index'
+  
+  get   'static_pages/home'
+  get   'static_pages/about'
+  get   'sessions/new'
+  get 'random/index'
+  get 'random/search'
+  post 'random/search'
+  get 'random/accept'
+  get 'random/success'
+  
+  get  '/signup',  to: 'users#new'
 
-  # get 'user/show'
+  post '/signup',  to: 'users#create'
 
-  # get 'user/new'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'  
 
-  # get 'user/create'
+  get 'geomap/index'
+  get 'geomap/directions'
+  
+  root  'random#index'
 
-  # get 'user/edit'
-
-  # get 'user/update'
-
-  # get 'user/delete'
-
-  # get 'user/destroy'
   resources :users
-  get 'users/login'
 
-  get 'geomaps/index'
-  get 'geomaps/directions'
-  root 'geomaps#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
