@@ -12,8 +12,16 @@
       <% end %>
 
       <p class="lead" id="confirm"></p>
+      <% if logged_in? %>
+        <%= link_to random_success_path, class: "btn btn-success" do %>
+           Check In <span class="glyphicon glyphicon-ok"></span>
+        <% end %>
+        
+       
+        
+      <% end %>
       
-      <button id = "success" type="button" class="btn btn-success">Check In <span class="glyphicon glyphicon-ok"></span></button>
+      
 </div>
 
 
@@ -68,7 +76,7 @@ var p2 = new google.maps.LatLng(dlat,dlong);
 var d = calcDistance(p1, p2);
 
 
-	if(d <= 100){
+	if(d <= 10){
 		document.getElementById("confirm").innerHTML = "You are at the destination!";
 		document.getElementById("success").style.display="block";
 	}else{

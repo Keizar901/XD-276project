@@ -74,8 +74,15 @@ class RandomController < ApplicationController
       if params[:notatdest]
       @err_msg = "You are not at the destination"
       end
+      
+      
 
     end
+    
+    
+    def success
+    end
+      
     helper_method :distance_between
   end
 

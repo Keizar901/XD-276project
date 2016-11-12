@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'random/search'
   post 'random/search'
   get 'random/accept'
+  get 'random/success'
   
   get  '/signup',  to: 'users#new'
 
