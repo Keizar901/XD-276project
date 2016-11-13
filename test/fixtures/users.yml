@@ -18,34 +18,34 @@ admin2:
   location_id: 1
 
 Example User9:
-  fname: Example User9
+  fname: Example User19
   lname: Example User
-  email: sample9@sample.org
+  email: sample19@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
   admin: true
 
 Example User2:
-  fname: Example User2
+  fname: Example User12
   lname: Example User
-  email: sample2@sample.org
+  email: sample12@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
 
 Example User3:
-  fname: Example User3
+  fname: Example User13
   lname: Example User
-  email: sample3@sample.org
+  email: sample13@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
 
 Example User4:
-  fname: Example User4
+  fname: Example User14
   lname: Example User
-  email: sample4@sample.org
+  email: sample14@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
