@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   get   'static_pages/home'
   get   'static_pages/about'
 
-  get 'password_resets/new'
-  get 'password_resets/edit'
+  
   get 'users/new'
   get 'sessions/new'
   get 'random/index'
@@ -15,7 +14,7 @@ Rails.application.routes.draw do
 
   post '/signup',  to: 'users#create'
 
-  
+
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
