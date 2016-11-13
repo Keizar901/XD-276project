@@ -1,17 +1,67 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  fname: MyString
-  lname: MyString
-  email: MyString
-  password: MyString
-  point: 1
-  location_id: 1
+#one:
+#  fname: MyString
+#  lname: MyString
+#  email: MyString
+#  password_digest: MyString
+#  point: 1
+#  location_id: 1
 
-two:
-  fname: MyString
-  lname: MyString
-  email: MyString
-  password: MyString
+#two:
+#  fname: MyString
+#  lname: MyString
+#  email: MyString
+#  password_digest: MyString
+#  point: 1
+#  location_id: 1
+
+michael:
+  fname: Michael
+  lname: Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+archer:
+  fname: Sterling
+  lname: Archer
+  email: duchess@example.gov
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+lana:
+  fname: Lana
+  lname: Kane
+  email: hands@example.gov
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+malory:
+  fname: Malory
+  lname: Archer
+  email: boss@example.gov
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  fname:  <%= "User #{n}" %>
+  lname:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+<% end %>
