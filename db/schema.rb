@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20161108015718) do
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
     t.string   "reset_digest"
-    t.string   ">"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
