@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get   'static_pages/about'
 
   
-  get 'users/new'
   get 'sessions/new'
   get 'random/index'
   get 'random/search'
