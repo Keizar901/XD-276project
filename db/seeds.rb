@@ -6,14 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #User.create!(fname: 'Admin', lname: 'Admin', email: 'example@admin.org', password: 'adminadmin', password_confirmation: 'adminadmin')
-User.create!(fname:  "Example User",
-             lname:  "Example User"
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             admin:     true,
-             activated: true,
-             activated_at: Time.zone.now)
 
 99.times do |n|
   fname  = Faker::Name.fname
@@ -28,3 +20,36 @@ User.create!(fname:  "Example User",
               activated: true,
               activated_at: Time.zone.now)
 end
+
+
+
+User.create!(fname:  "Example User19",
+			 lname:"Example User",
+             email: "sample19@sample.org",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
+
+User.create!(fname:  "Example User12",
+			 lname:"Example User",
+             email: "sample12@sample.org",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             activated: true,
+             activated_at: Time.zone.now)
+User.create!(fname:  "Example User13",
+			 lname:"Example User",
+             email: "sample13@sample.org",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             activated: true,
+             activated_at: Time.zone.now)
+User.create!(fname:  "Example User14",
+			 lname:"Example User",
+             email: "sample14@sample.org",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             activated: true,
+             activated_at: Time.zone.now)

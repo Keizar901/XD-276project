@@ -1,5 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+
 #one:
 #  fname: MyString
 #  lname: MyString
@@ -36,10 +37,53 @@ archer:
   activated: true
   activated_at: <%= Time.zone.now %>
 
-lana:
-  fname: Lana
-  lname: Kane
-  email: hands@example.gov
+
+admin1:
+  fname: admin1
+  lname: ad
+  email: admin1@example.com
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+
+
+admin2:
+  fname: admin2
+  lname: ad
+  email: admin2@example.com
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+
+Example User9:
+  fname: Example User9
+  lname: Example User
+  email: sample9@sample.org
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+  admin: true
+
+Example User2:
+  fname: Example User2
+  lname: Example User
+  email: sample2@sample.org
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+
+Example User3:
+  fname: Example User3
+  lname: Example User
+  email: sample3@sample.org
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+
+Example User4:
+  fname: Example User4
+  lname: Example User
+  email: sample4@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1

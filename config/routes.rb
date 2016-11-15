@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   get   'static_pages/home'
   get   'static_pages/about'
 
-  
+
   get 'sessions/new'
   get 'random/index'
   get 'random/search'
   post 'random/search'
+
+  get 'random/accept'
+  get 'random/success'
+
 
   get  '/signup',  to: 'users#new'
 

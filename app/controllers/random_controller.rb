@@ -9,10 +9,12 @@ class RandomController < ApplicationController
   end
 
   def search
-    client = Yelp::Client.new({consumer_key: 'FAWYz3fLKNkJk8y9hov-HQ',
-      consumer_secret: 'IMSJ9Gtj-N4C7LiOeOOu8i3YVnk',
-      token: '6gU0xJzU096r-ImUQXV5694Vj7RLipDk',
-      token_secret: 's8SSdbNje6DN5Q4EfAtM7YgRye4'
+    secrets = Rails.application.secrets
+
+    client = Yelp::Client.new({consumer_key: secrets.yelp_consumer_key,
+      consumer_secret: secrets.yelp_consumer_secret,
+      token: secrets.yelp_token,
+      token_secret: secrets.yelp_token_secret
       })
 
       @distance = params[:distance]
@@ -50,5 +52,38 @@ class RandomController < ApplicationController
 
       end
     end
-  end
 
+    def accept
+
+      # if location unavailable, redirect to index
+      if cookies[:lat_lng] == nil
+        redirect_to random_index_path(lonotfound: true)
+      else
+        lat_lng = cookies[:lat_lng].split("|")
+
+        @user_lat = lat_lng[0]
+        @user_lng = lat_lng[1]
+      end
+
+      @destlat = params[:destlat]
+      @destlong = params[:destlong]
+      @img_url = params[:imgurl]
+      @img_placeholder = 'http://bit.ly/2fkkakw'
+      @name = params[:name]
+
+
+
+      if params[:notatdest]
+      @err_msg = "You are not at the destination"
+      end
+      
+      
+
+    end
+    
+    
+    def success
+    end
+      
+    helper_method :distance_between
+  end
