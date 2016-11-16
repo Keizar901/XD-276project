@@ -11,14 +11,19 @@
       <p><%= image_tag @img_placeholder, class: "img-thumbnail" %></p>
       <% end %>
 
-      <p class="lead" id="confirm"></p>
+      <p class="lead"  id= "confirm"></p>
       <% if logged_in? %>
+        <%= button_to "Check In Button", random_accept_path, class: "btn btn-success" %>
+           
+
         <%= link_to random_success_path, class: "btn btn-success" do %>
            Check In <span class="glyphicon glyphicon-ok"></span>
         <% end %>
-        
-       
-        
+      <% end %>
+      <% if !logged_in? %>
+        <%= link_to random_success_path, class: "btn btn-success" do %>
+           Check In <span class="glyphicon glyphicon-ok"></span>
+        <% end %>
       <% end %>
       
       
@@ -64,19 +69,19 @@
 
 <!-- Distance Calc -->
 <script>
-document.getElementById("success").style.display="none";
-var ulat = <%= @user_lat %>;
-var ulng = <%= @user_lng %>;
-var dlat = <%= @destlat %>;
-var dlong = <%= @destlong %>;
+  document.getElementById("success").style.display="none";
+  var ulat = <%= @user_lat %>;
+  var ulng = <%= @user_lng %>;
+  var dlat = <%= @destlat %>;
+  var dlong = <%= @destlong %>;
+  
+  var p1 = new google.maps.LatLng(ulat, ulng);
+  var p2 = new google.maps.LatLng(dlat,dlong);
+  
+  var d = calcDistance(p1, p2);
 
-var p1 = new google.maps.LatLng(ulat, ulng);
-var p2 = new google.maps.LatLng(dlat,dlong);
-
-var d = calcDistance(p1, p2);
-
-
-	if(d <= 10){
+// distance range
+	if(d <= 1){
 		document.getElementById("confirm").innerHTML = "You are at the destination!";
 		document.getElementById("success").style.display="block";
 	}else{

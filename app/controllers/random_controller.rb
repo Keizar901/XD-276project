@@ -84,6 +84,12 @@ class RandomController < ApplicationController
     
     def success
     end
+    
+    def addpoints
+      @current_user = current_user
+      @points =  @current_user.point + 5
+      @current_user.update_attribute(:point, @points)
+    end
       
     helper_method :distance_between
   end
