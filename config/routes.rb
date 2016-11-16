@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   get 'random/accept'
   get 'random/success'
-
+  # random addpoints function 
+  get 'random/addpoints'
+  post 'random/addpoints'
 
   get  '/signup',  to: 'users#new'
 
@@ -32,6 +34,6 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
-
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
