@@ -95,13 +95,14 @@ class RandomController < ApplicationController
       @location = Location.new
       @destlat = params[:destlat]
       @destlong = params[:destlong]
-      #@img_url = params[:imgurl]
+      @img_url = params[:imgurl]
       @img_placeholder = 'http://bit.ly/2fkkakw'
       @name = params[:name]
 
       @location.update_attribute(:name, @name)
       @location.update_attribute(:user_id, current_user.id)
-      #@location.update_attribute(:img_url, @img_url)
+      @location.update_attribute(:imgurl, @img_url)
+      @location.update_attribute(:imgplaceholder, @img_placeholder)
 
 
       redirect_to controller: 'users', action: 'show', id: @current_user.id
