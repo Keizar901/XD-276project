@@ -7,3 +7,22 @@
 <%= @user.fname %>, <%= @user.email %>
 <h1>Your have <%= @user.point %> points</h1>
 
+
+<h2 align="left">Locations visited:</h2>
+
+<% @user.locations.each do |location| %>
+
+  <h1><%= location.name %></h1>
+      <% if (location.imgurl) %>
+        <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
+      <% else %>
+      
+        <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
+      <% end %>
+      <p>Visited At <%= location.timestamp %></p>
+  <br />
+<% end %>
+
+
+
+
