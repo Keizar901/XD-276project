@@ -7,3 +7,15 @@
 <%= @user.fname %>, <%= @user.email %>
 <h1>Your have <%= @user.point %> points</h1>
 
+
+<h2 align="left">Locations visited:</h2>
+
+<% @user.locations.each do |location| %>
+
+  <h3><%= location.name %><h3>
+  <br />
+<% end %>
+
+
+
+
