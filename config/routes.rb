@@ -8,7 +8,17 @@ Rails.application.routes.draw do
   post 'random/search'
   get 'random/accept'
   get 'random/success'
+<<<<<<< HEAD
   
+=======
+  # random addpoints function 
+  get 'random/addpoints'
+  post 'random/addpoints'
+  
+  # post method for accept
+  post 'random/accept'
+
+>>>>>>> cfe0088... merge with locationhis
   get  '/signup',  to: 'users#new'
 
   post '/signup',  to: 'users#create'

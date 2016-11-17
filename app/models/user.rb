@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+<<<<<<< HEAD
+=======
+  has_many :locations
+	attr_accessor :remember_token, :activation_token, :reset_token
+>>>>>>> cfe0088... merge with locationhis
 
 	before_save { email.downcase! }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161117055333) do
     t.string   "imgurl"
     t.string   "imgplaceholder"
     t.datetime "timestamp"
+<<<<<<< HEAD
   end
 
   create_table "tokimons", force: :cascade do |t|
@@ -48,6 +49,8 @@ ActiveRecord::Schema.define(version: 20161117055333) do
     t.integer  "trailevel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+>>>>>>> cfe0088... merge with locationhis
   end
 
   create_table "users", force: :cascade do |t|
