@@ -18,4 +18,9 @@ A [UML diagram](https://drive.google.com/file/d/0B784Gd1vTJZJWThvbk9fS0N1c1U/vie
 - After 5 seconds in the success page, user will be redirected back to profile page.
 
 ## Resturant histories
+- When the user completes a challenge and clicks the "check in" button, the restaurant that they visited will be saved
+	- On their profile page, the user will be able to see the name and photo of all the restaurants they have visited in a list
+	- Restaurants visited multiple times will be displayed seperately
+	- The time that the user finishes the challenge will be stored and displayed in the history
+
 

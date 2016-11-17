@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'random/addpoints'
   post 'random/addpoints'
 
+
   get  '/signup',  to: 'users#new'
 
   post '/signup',  to: 'users#create'
