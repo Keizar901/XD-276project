@@ -17,6 +17,9 @@
       <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
       <% else %>
       <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
+
+      <p>Visited At <%= location.timestamp %></p>
+
       <% end %>
   <br />
 <% end %>
