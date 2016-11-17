@@ -12,8 +12,8 @@
     </div>
     <div class="col-xs-6 text-right">
       <h4>
-        <%= link_to random_accept_path(:destlat => @bus_lat, :destlong => @bus_lng, :name => @name, 
-        :imgurl => @img_url), class: "btn btn-success" do %>
+        <%= button_to random_accept_path(:destlat => @bus_lat, :destlong => @bus_lng, :name => @name, 
+        :imgurl => @img_url), disabled: true,  class: "btn btn-success" do %>
            Accept Challenge <span class="glyphicon glyphicon-ok"></span>
         <% end %>
       </h4>

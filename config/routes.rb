@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   # random addpoints function 
   get 'random/addpoints'
   post 'random/addpoints'
-
+  
+  # post method for accept
+  post 'random/accept'
 
   get  '/signup',  to: 'users#new'
 

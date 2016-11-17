@@ -22,5 +22,12 @@ A [UML diagram](https://drive.google.com/file/d/0B784Gd1vTJZJWThvbk9fS0N1c1U/vie
 	- On their profile page, the user will be able to see the name and photo of all the restaurants they have visited in a list
 	- Restaurants visited multiple times will be displayed seperately
 	- The time that the user finishes the challenge will be stored and displayed in the history
+	- 
+	
+
+-------------------------------------------------------------------------------------------------------
+# What we have:
+- If the user is within the range of 0.3 km, the "finish challenge" button will be enabled.
+- 
 
 
