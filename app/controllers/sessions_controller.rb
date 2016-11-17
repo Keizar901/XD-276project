@@ -29,14 +29,18 @@ class SessionsController < ApplicationController
 
     @authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
     if @authorization
-      render text: "Welcome back #{@authorization.user.name}! You have already signed up."
+      render text: "Welcome back #{@authorization.user.fname}! You have already signed up."
     else
-      user = User.new name: auth_hash["info"]["name"], email: auth_hash["info"]["email"]
+      user = User.new fname: auth_hash["extra"]["raw_info"]["first_name"], lname: auth_hash["extra"]["raw_info"]["last_name"], email: auth_hash["info"]["email"]
       user.authorizations.build provider: auth_hash["provider"], uid: auth_hash["uid"]
       user.save
 
-      render text: "Hi #{user.name}! You've signed up."
+      render text: "Hi #{user.fname}! You've signed up."
     end
+  end
+
+  def failure
+    render text: "You need to allow access to our app"
   end
 
   def destroy
