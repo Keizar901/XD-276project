@@ -16,14 +16,6 @@
         <%= button_to "Check In Button", random_addpoints_path(:destlat => @bus_lat, :destlong => @bus_lng, :name => @name, 
         :imgurl => @img_url), :disabled => true, class: "btn btn-success", id: 'success' %>
       <% end %>
-      
-      
-      <% if !logged_in? %>
-        <%= button_to "Sign up to save your points", random_addpoints_path(:destlat => @bus_lat, :destlong => @bus_lng, :name => @name, 
-        :imgurl => @img_url), :disabled => true, class: "btn btn-success", id: 'success' %>
-      <% end %>
-      
-      
 </div>
 
 
@@ -83,7 +75,7 @@
 		// document.getElementById("success").style.display="block";
 		document.getElementById("success").disabled = false;
 	}else{
-		document.getElementById("confirm").innerHTML = "You are currently "+ d +"KM from the destination, " + "Please go to the restaurant to finish the challenge";
+		document.getElementById("confirm").innerHTML = "You are currently "+ d +" KM from the destination, " + "Please go to the restaurant to finish the challenge.";
 	}
 
 //calculates distance between two points in km's
