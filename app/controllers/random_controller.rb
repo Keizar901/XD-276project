@@ -113,20 +113,6 @@ class RandomController < ApplicationController
 
     end
 
-    def newlocation
-      @current_user = location.new
-      @points =  @current_user.point + 5
-      @current_user.update_attribute(:point, @points)
-      # change the flahs text in application.html.erb
-      flash[:notice] = 'Congratulations!! You earn 5 points for finishing a challenge!'
-      redirect_to controller: 'users', action: 'show', id: @current_user.id
-      
-      @destlat = params[:destlat]
-      @destlong = params[:destlong]
-      @img_url = params[:imgurl]
-      @img_placeholder = 'http://bit.ly/2fkkakw'
-      @name = params[:name]
-    end
       
     helper_method :distance_between
   end
