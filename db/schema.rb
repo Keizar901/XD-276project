@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20161101235854) do
-=======
 ActiveRecord::Schema.define(version: 20161113032237) do
->>>>>>> upstream/master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,10 +31,6 @@ ActiveRecord::Schema.define(version: 20161113032237) do
     t.string   "password_digest"
     t.integer  "point"
     t.integer  "location_id"
-<<<<<<< HEAD
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-=======
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "remember_digest"
@@ -48,7 +40,6 @@ ActiveRecord::Schema.define(version: 20161113032237) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.boolean  "admin",             default: false
->>>>>>> upstream/master
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

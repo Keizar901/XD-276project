@@ -4,13 +4,6 @@ module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
   end
-<<<<<<< HEAD
-  # Returns the current logged-in user (if any).
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end  
-  
-=======
 
   # Remembers a user in a persistent session.
   def remember(user)
@@ -33,19 +26,10 @@ module SessionsHelper
   end
 
 
->>>>>>> upstream/master
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
     !current_user.nil?
   end
-<<<<<<< HEAD
-  
-  # Logs out the current user.
-  def log_out
-    session.delete(:user_id)
-    @current_user = nil
-  end
-=======
 
   # Forgets a persistent session.
   def forget(user)
@@ -80,5 +64,4 @@ module SessionsHelper
     session[:forwarding_url] = request.original_url if request.get?
   end
 
->>>>>>> upstream/master
 end

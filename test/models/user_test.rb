@@ -7,11 +7,7 @@ class UserTest < ActiveSupport::TestCase
 
 def setup
     @user = User.new(fname: "FirstName", lname: "LastName", email: "user@example.com",
-<<<<<<< HEAD
-     password: "foobar", password_confirmation: "foobar"))
-=======
      password: "foobar", password_confirmation: "foobar")
->>>>>>> upstream/master
   end
 
   test "should be valid" do
@@ -44,12 +40,6 @@ def setup
   end
 
   test "The email should not be too long" do
-<<<<<<< HEAD
-    @user.email = "a" * 50 + "@example.com"
-    assert_not @user.valid?
-  end
-
-=======
     @user.email = "a" * 500 + "@example.com"
     assert_not @user.valid?
   end
@@ -63,7 +53,6 @@ def setup
     end
   end
 
->>>>>>> upstream/master
     test "email addresses should be unique" do
     duplicate_user = @user.dup
     duplicate_user.email = @user.email.upcase

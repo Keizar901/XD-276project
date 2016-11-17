@@ -1,22 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-<<<<<<< HEAD
-one:
-  fname: MyString
-  lname: MyString
-  email: MyString
-  password: MyString
-  point: 1
-  location_id: 1
-
-two:
-  fname: MyString
-  lname: MyString
-  email: MyString
-  password: MyString
-  point: 1
-  location_id: 1
-=======
 
 #one:
 #  fname: MyString
@@ -126,4 +109,3 @@ user_<%= n %>:
   activated: true
   activated_at: <%= Time.zone.now %>
 <% end %>
->>>>>>> upstream/master

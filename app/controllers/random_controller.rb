@@ -84,8 +84,6 @@ class RandomController < ApplicationController
     
     def success
     end
-<<<<<<< HEAD
-=======
     
     def addpoints
       @current_user = current_user
@@ -102,7 +100,6 @@ class RandomController < ApplicationController
       @name = params[:name]
       
     end
->>>>>>> upstream/master
       
     helper_method :distance_between
   end

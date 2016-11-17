@@ -3,13 +3,8 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
 	test "should get root" do
-<<<<<<< HEAD
-    get FILL_IN
-    assert_response FILL_IN
-=======
     get '/'
     assert_response :success
->>>>>>> upstream/master
   end
 
   	test "should get home" do

@@ -11,8 +11,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get root_path
     assert flash.empty?
   end
-<<<<<<< HEAD
-=======
 
   test "login with valid information followed by logout" do
     get login_path
@@ -48,5 +46,4 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   end
 
 
->>>>>>> upstream/master
 end
