@@ -28,8 +28,11 @@ ActiveRecord::Schema.define(version: 20161117074907) do
     t.integer  "latitude"
     t.integer  "longitude"
     t.string   "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "imgurl"
+    t.string   "imgplaceholder"
+    t.datetime "timestamp"
   end
 
   create_table "users", force: :cascade do |t|

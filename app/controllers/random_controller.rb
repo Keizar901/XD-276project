@@ -91,15 +91,28 @@ class RandomController < ApplicationController
       @current_user.update_attribute(:point, @points)
       # change the flahs text in application.html.erb
       flash[:notice] = 'Congratulations!! You earn 5 points for finishing a challenge!'
-      redirect_to controller: 'users', action: 'show', id: @current_user.id
-      
+
+      @location = Location.new
       @destlat = params[:destlat]
       @destlong = params[:destlong]
       @img_url = params[:imgurl]
       @img_placeholder = 'http://bit.ly/2fkkakw'
       @name = params[:name]
+
+      @location.update_attribute(:name, @name)
+      @location.update_attribute(:user_id, current_user.id)
+      @location.update_attribute(:imgurl, @img_url)
+      @location.update_attribute(:imgplaceholder, @img_placeholder)
+      @location.update_attribute(:timestamp, DateTime.now.in_time_zone("Pacific Time (US & Canada)"))
+
+
+      redirect_to controller: 'users', action: 'show', id: @current_user.id
       
+      
+
+
     end
+
       
     helper_method :distance_between
   end
