@@ -20,7 +20,14 @@
 
       <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
-    <%= link_to "Login using Facebook", "/auth/facebook" %>
+
+    <br>
+    <!-- Facebook login button -->
+    <%= link_to '/auth/facebook', class: 'btn btn-social btn-facebook' do %>
+      <span class="fa fa-facebook"></span>Facebook
+    <% end %>
+    <br><br>
+
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>
