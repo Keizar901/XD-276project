@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   # facebook login
-  # get   '/login', :to => 'sessions#new', :as => :login
   match '/auth/:provider/callback', to: 'sessions#create_facebook', via: [:get, :post]
   match '/auth/failure', to: 'sessions#failure', via: [:get, :post]
 
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
   # random addpoints function
   get 'random/addpoints'
   post 'random/addpoints'
-  
+
   # post method for accept
   post 'random/accept'
 
