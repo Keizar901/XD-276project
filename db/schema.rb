@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113032237) do
+ActiveRecord::Schema.define(version: 20161117055333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,44 +20,32 @@ ActiveRecord::Schema.define(version: 20161113032237) do
     t.integer  "latitude"
     t.integer  "longitude"
     t.string   "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "imgurl"
+    t.string   "imgplaceholder"
+    t.datetime "timestamp"
   end
 
-  create_table "people", force: :cascade do |t|
-    t.string   "pname"
-    t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "things", force: :cascade do |t|
-    t.string   "tname"
-    t.text     "description"
-    t.integer  "person_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "tokemons", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "weight"
-    t.integer  "height"
-    t.integer  "fly"
-    t.integer  "fight"
-    t.integer  "fire"
-    t.integer  "water"
-    t.integer  "electrify"
-    t.integer  "ice"
-    t.integer  "total"
+  create_table "tokimons", force: :cascade do |t|
+    t.string   "tokiname"
+    t.string   "tokicolour"
+    t.integer  "tokiweight"
+    t.integer  "tokiheight"
+    t.integer  "tokifly"
+    t.integer  "tokifight"
+    t.integer  "tokiwater"
+    t.integer  "tokielectric"
+    t.integer  "tokiice"
+    t.integer  "tokitotal"
     t.integer  "trainer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "trainers", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "level"
+    t.string   "trainame"
+    t.integer  "trailevel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,10 +57,15 @@ ActiveRecord::Schema.define(version: 20161113032237) do
     t.string   "password_digest"
     t.integer  "point"
     t.integer  "location_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "admin",           default: false
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "admin",             default: false
+    t.string   "remember_digest"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
   create_table "widgets", force: :cascade do |t|

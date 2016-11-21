@@ -8,25 +8,25 @@
 #User.create!(fname: 'Admin', lname: 'Admin', email: 'example@admin.org', password: 'adminadmin', password_confirmation: 'adminadmin')
 
 
-User.create!(fname:  "Example User19",
-			 lname:"Example User",
-             email: "sample19@sample.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
+User.create!(fname:  "Admin",
+			 lname:"Admin",
+             email: "admin@sample.org",
+             password:              "adminadmin",
+             password_confirmation: "adminadmin",
              admin: true)
 
-User.create!(fname:  "Example User12",
+User.create!(fname:  "User1",
 			 lname:"Example User",
-             email: "sample12@sample.org",
-             password:              "foobar",
-             password_confirmation: "foobar")
-User.create!(fname:  "Example User13",
+             email: "ex1@sample.org",
+             password:              "user1user1",
+             password_confirmation: "user1user1")
+User.create!(fname:  "User2",
 			 lname:"Example User",
-             email: "sample13@sample.org",
-             password:              "foobar",
-             password_confirmation: "foobar")
-User.create!(fname:  "Example User14",
+             email: "ex2@sample.org",
+             password:              "user2user2",
+             password_confirmation: "user2user2")
+User.create!(fname:  "User3",
 			 lname:"Example User",
-             email: "sample14@sample.org",
-             password:              "foobar",
-             password_confirmation: "foobar")
+             email: "ex3@sample.org",
+             password:              "user3user3",
+             password_confirmation: "user3user3")
