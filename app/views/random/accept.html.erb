@@ -11,17 +11,11 @@
       <p><%= image_tag @img_placeholder, class: "img-thumbnail" %></p>
       <% end %>
 
-      <p class="lead" id="confirm"></p>
+      <p class="lead"  id= "confirm"></p>
       <% if logged_in? %>
-        <%= link_to random_success_path, class: "btn btn-success" do %>
-           Check In <span class="glyphicon glyphicon-ok"></span>
-        <% end %>
-        
-       
-        
+        <%= button_to "Check In Button", random_addpoints_path(:destlat => @bus_lat, :destlong => @bus_lng, :name => @name, 
+        :imgurl => @img_url), :disabled => true, class: "btn btn-success", id: 'success' %>
       <% end %>
-      
-      
 </div>
 
 
@@ -64,23 +58,24 @@
 
 <!-- Distance Calc -->
 <script>
-document.getElementById("success").style.display="none";
-var ulat = <%= @user_lat %>;
-var ulng = <%= @user_lng %>;
-var dlat = <%= @destlat %>;
-var dlong = <%= @destlong %>;
+  // document.getElementById("success").style.display="none";
+  var ulat = <%= @user_lat %>;
+  var ulng = <%= @user_lng %>;
+  var dlat = <%= @destlat %>;
+  var dlong = <%= @destlong %>;
+  
+  var p1 = new google.maps.LatLng(ulat, ulng);
+  var p2 = new google.maps.LatLng(dlat,dlong);
+  
+  var d = calcDistance(p1, p2);
 
-var p1 = new google.maps.LatLng(ulat, ulng);
-var p2 = new google.maps.LatLng(dlat,dlong);
-
-var d = calcDistance(p1, p2);
-
-
-	if(d <= 10){
+// distance range
+	if(d <= 500000){
 		document.getElementById("confirm").innerHTML = "You are at the destination!";
-		document.getElementById("success").style.display="block";
+		// document.getElementById("success").style.display="block";
+		document.getElementById("success").disabled = false;
 	}else{
-		document.getElementById("confirm").innerHTML = "You are currently "+ d +"km from the destination";
+		document.getElementById("confirm").innerHTML = "You are currently "+ d +" KM from the destination, " + "Please go to the restaurant to finish the challenge.";
 	}
 
 //calculates distance between two points in km's
