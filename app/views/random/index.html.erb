@@ -10,7 +10,12 @@
 
   <%= form_tag random_search_path, class: "form-inline" do %>
     <div class="form-group">
-     <label>Welcome to the RestaRun App!</label><br>
+    <% if logged_in? %> 
+      <label>Welcome to the RestaRun App, <%= current_user.fname%>!</label><br>
+    <%else%>
+      <label>Welcome to the RestaRun App!</label><br>
+     <% end%>
+     
       <label>How many minutes do you want to walk?</label>
       <%= select_tag :distance,
        options_for_select([['10', 800], ['20', 1600], ['30', 2400], ['60', 4800]]),
