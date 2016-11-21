@@ -23,6 +23,7 @@ end
 
 
 
+<<<<<<< HEAD
 User.create!(fname:  "Example User19",
 			 lname:"Example User",
              email: "sample19@sample.org",
@@ -31,9 +32,18 @@ User.create!(fname:  "Example User19",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
+=======
+User.create!(fname:  "Admin",
+			 lname:"Admin",
+             email: "admin@sample.org",
+             password:              "adminadmin",
+             password_confirmation: "adminadmin",
+             admin: true)
+>>>>>>> update_profile
 
-User.create!(fname:  "Example User12",
+User.create!(fname:  "User1",
 			 lname:"Example User",
+<<<<<<< HEAD
              email: "sample12@sample.org",
              password:              "foobar",
              password_confirmation: "foobar",
@@ -53,3 +63,18 @@ User.create!(fname:  "Example User14",
              password_confirmation: "foobar",
              activated: true,
              activated_at: Time.zone.now)
+=======
+             email: "ex1@sample.org",
+             password:              "user1user1",
+             password_confirmation: "user1user1")
+User.create!(fname:  "User2",
+			 lname:"Example User",
+             email: "ex2@sample.org",
+             password:              "user2user2",
+             password_confirmation: "user2user2")
+User.create!(fname:  "User3",
+			 lname:"Example User",
+             email: "ex3@sample.org",
+             password:              "user3user3",
+             password_confirmation: "user3user3")
+>>>>>>> update_profile

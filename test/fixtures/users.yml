@@ -1,5 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+<<<<<<< HEAD
 
 #one:
 #  fname: MyString
@@ -59,31 +60,37 @@ Example User9:
   fname: Example User9
   lname: Example User
   email: sample9@sample.org
+=======
+Admin:
+  fname: Admin
+  lname: Admin
+  email: admin@sample.org
+>>>>>>> update_profile
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
   admin: true
 
-Example User2:
-  fname: Example User2
-  lname: Example User
-  email: sample2@sample.org
+User1:
+  fname: User1
+  lname: User1
+  email: ex1@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
 
-Example User3:
-  fname: Example User3
-  lname: Example User
-  email: sample3@sample.org
+User3:
+  fname: User2
+  lname: User2
+  email: ex2@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
 
-Example User4:
-  fname: Example User4
-  lname: Example User
-  email: sample4@sample.org
+User4:
+  fname: User3
+  lname: User3
+  email: ex3@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
