@@ -39,7 +39,6 @@ gem 'faker',          '1.6.6'
 gem 'gmaps4rails'
 
 
-gem 'rails-controller-testing'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
