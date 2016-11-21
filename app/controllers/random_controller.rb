@@ -103,7 +103,7 @@ class RandomController < ApplicationController
       @location.update_attribute(:user_id, current_user.id)
       @location.update_attribute(:imgurl, @img_url)
       @location.update_attribute(:imgplaceholder, @img_placeholder)
-      @location.update_attribute(:timestamp, DateTime.now)
+      @location.update_attribute(:timestamp, DateTime.now.in_time_zone("Pacific Time (US & Canada)"))
 
 
       redirect_to controller: 'users', action: 'show', id: @current_user.id

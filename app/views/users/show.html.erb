@@ -14,13 +14,12 @@
 
   <h1><%= location.name %></h1>
       <% if (location.imgurl) %>
-      <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
+        <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
       <% else %>
-      <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
-
-      <p>Visited At <%= location.timestamp %></p>
-
+      
+        <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
       <% end %>
+      <p>Visited At <%= location.timestamp %></p>
   <br />
 <% end %>
 
