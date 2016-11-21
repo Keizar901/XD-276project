@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'geomap/index'
   get 'geomap/directions'
+
+  get 'users/login'
   
   root  'random#index'
 
