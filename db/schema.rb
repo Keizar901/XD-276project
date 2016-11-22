@@ -25,32 +25,6 @@ ActiveRecord::Schema.define(version: 20161117055333) do
     t.string   "imgurl"
     t.string   "imgplaceholder"
     t.datetime "timestamp"
-<<<<<<< HEAD
-  end
-
-  create_table "tokimons", force: :cascade do |t|
-    t.string   "tokiname"
-    t.string   "tokicolour"
-    t.integer  "tokiweight"
-    t.integer  "tokiheight"
-    t.integer  "tokifly"
-    t.integer  "tokifight"
-    t.integer  "tokiwater"
-    t.integer  "tokielectric"
-    t.integer  "tokiice"
-    t.integer  "tokitotal"
-    t.integer  "trainer_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "trainers", force: :cascade do |t|
-    t.string   "trainame"
-    t.integer  "trailevel"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=======
->>>>>>> cfe0088... merge with locationhis
   end
 
   create_table "users", force: :cascade do |t|
