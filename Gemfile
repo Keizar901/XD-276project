@@ -48,9 +48,10 @@ gem 'yelp', require: 'yelp'
 
 # Facebook login
 gem 'omniauth-facebook'
-# Social login buttons
-gem 'bootstrap-social-rails'
-gem 'font-awesome-rails'
+
+# Social login buttons (disable for now)
+# gem 'bootstrap-social-rails'
+# gem 'font-awesome-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
