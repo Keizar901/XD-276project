@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
         log_in user
         redirect_back_or user
       else
-        message  = "Login failed."
+        message  = "Our app only support facebook account sign up with an Email address."
         flash[:warning] = message
         redirect_to root_url
       end
