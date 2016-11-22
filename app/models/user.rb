@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :locations
+  has_attached_file :avatar, styles:{ large: "600x600>", medium: "300x300>", thumb: "100x100>" }
+	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
 	attr_accessor :remember_token, :activation_token, :reset_token
 
 	before_save { email.downcase! }
@@ -9,11 +12,11 @@ class User < ApplicationRecord
 	validates :lname, presence: true, length: { maximum: 20 }
 	validates :email, presence: true, length: { maximum: 255 },
 	 					format: { with: VALID_EMAIL_REGEX },
-	  					uniqueness: { case_sensitive: false }	
+	  					uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-	
+
 	after_initialize :init_config
 	def init_config
       self.point  ||= 0          #will set the default value of point only if it's nil
