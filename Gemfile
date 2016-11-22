@@ -39,11 +39,19 @@ gem 'faker',          '1.6.6'
 gem 'gmaps4rails'
 
 
+gem 'rails-controller-testing'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 gem 'yelp', require: 'yelp'
+
+# Facebook login
+gem 'omniauth-facebook'
+
+# Social login buttons (disable for now)
+# gem 'bootstrap-social-rails'
+# gem 'font-awesome-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

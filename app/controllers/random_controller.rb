@@ -76,15 +76,15 @@ class RandomController < ApplicationController
       if params[:notatdest]
       @err_msg = "You are not at the destination"
       end
-
-
+      
+      
 
     end
-
-
+    
+    
     def success
     end
-
+    
     def addpoints
       @current_user = current_user
       @points =  @current_user.point + 5
@@ -107,11 +107,12 @@ class RandomController < ApplicationController
 
 
       redirect_to controller: 'users', action: 'show', id: @current_user.id
-
-
+      
+      
 
 
     end
 
+      
     helper_method :distance_between
   end

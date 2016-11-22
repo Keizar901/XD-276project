@@ -16,7 +16,7 @@
 #
 default: &default
   adapter: postgresql
-  # encoding: SQL_ASCII
+  encoding: unicode
 
   # encoding: unicode
   # # For details on connection pooling, see rails configuration guide
