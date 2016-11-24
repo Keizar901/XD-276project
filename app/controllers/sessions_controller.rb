@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
   def create_facebook
     auth_hash = request.env['omniauth.auth']
-    
+
     @authorization = Authorization.find_by_provider_and_uid(auth_hash['provider'], auth_hash['uid'])
     if @authorization
       user = @authorization.user
@@ -43,6 +43,7 @@ class SessionsController < ApplicationController
       user = User.new fname: fname, lname: lname, email: email, password: uid
       user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
       if user.save
+        user.activate
         log_in user
         redirect_back_or user
       else
@@ -63,7 +64,7 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
-  
+
   def store_return_to
     session[:return_to] = request.url
   end
