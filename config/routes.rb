@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # facebook login
+  match '/auth/:provider/callback', to: 'sessions#create_facebook', via: [:get, :post]
+  match '/auth/failure', to: 'sessions#failure', via: [:get, :post]
+
   get   'static_pages/home'
   get   'static_pages/about'
 
@@ -11,10 +15,10 @@ Rails.application.routes.draw do
 
   get 'random/accept'
   get 'random/success'
-  # random addpoints function 
+  # random addpoints function
   get 'random/addpoints'
   post 'random/addpoints'
-  
+
   # post method for accept
   post 'random/accept'
 
@@ -37,6 +41,6 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
