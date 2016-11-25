@@ -3,8 +3,8 @@ require 'test_helper'
 class UserControllerTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:Admin)
-    @other_user = users(:User1)
+    @user = users(:admin1)
+    @other_user = users(:admin2)
   end
 
   test "should redirect index when not logged in" do
