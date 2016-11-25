@@ -89,6 +89,21 @@ class RandomController < ApplicationController
       @current_user = current_user
       @points =  @current_user.point + 5
       @current_user.update_attribute(:point, @points)
+
+      if @current_user.point <= 5
+        @current_user.update_attribute(:rankicon, "http://i.imgur.com/BMfKmgt.png")
+      elsif @current_user.point <= 20
+        @current_user.update_attribute(:rankicon, "http://i.imgur.com/4rr3XdX.png")
+      elsif @current_user.point <= 40
+        @current_user.update_attribute(:rankicon, "http://i.imgur.com/KghhtvY.png")
+      elsif @current_user.point <= 60
+        @current_user.update_attribute(:rankicon, "http://i.imgur.com/XnP3LVG.png")
+      elsif @current_user.point <= 80
+        @current_user.update_attribute(:rankicon, "http://i.imgur.com/fmu3EDU.png")
+      else
+        @current_user.update_attribute(:rankicon, "http://i.imgur.com/JNg57gR.png")
+      end
+
       # change the flahs text in application.html.erb
       flash[:notice] = 'Congratulations!! You earn 5 points for finishing a challenge!'
 

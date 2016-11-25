@@ -2,6 +2,7 @@
 <h1>
   <%= gravatar_for @user %>
   <%= @user.fname %>
+  <%= image_tag @user.rankicon, class: "img-thumbnail" %>
 </h1>
 
 <%= @user.fname %>, <%= @user.email %>
