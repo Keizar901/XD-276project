@@ -16,8 +16,8 @@
 #
 default: &default
   adapter: postgresql
-  encoding: SQL_ASCII
-  
+  encoding: unicode
+
   # encoding: unicode
   # # For details on connection pooling, see rails configuration guide
   # # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -25,11 +25,11 @@ default: &default
   # host: localhost
   # user: groupxd
   # password: 276
-  
+
   #Andy setting in c9 enviorment
   #encoding: SQL_ASCII
   pool: 5
-  
+
 
 development:
   <<: *default
@@ -98,4 +98,4 @@ production:
   <<: *default
   database: XD-276project_production
   username: XD-276project
-  password: <%= ENV['XD-276PROJECT_DATABASE_PASSWORD'] %>
+password: <%= ENV['XD-276PROJECT_DATABASE_PASSWORD'] %>
