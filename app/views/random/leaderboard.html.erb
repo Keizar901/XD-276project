@@ -1,0 +1,14 @@
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.fname %></td>
+    <td><%= user.lname %></td>
+    <td><%= user.lname %></td>
+    <td><%= user.point %> points</td>
+    <% if user.rankicon %>
+    <td><%= image_tag user.rankicon, class: "img-thumbnail", height: '50', width: '50' %></td>
+    <% else %>
+    <td>Not Ranked</td>
+    <% end %>
+  </tr>
+</br>
+<% end %>
