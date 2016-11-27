@@ -1,14 +1,36 @@
-<% @users.each do |user| %>
+<table class=" table table-striped sortable">
+<thead>
   <tr>
-    <td><%= user.fname %></td>
-    <td><%= user.lname %></td>
-    <td><%= user.lname %></td>
-    <td><%= user.point %> points</td>
-    <% if user.rankicon %>
-    <td><%= image_tag user.rankicon, class: "img-thumbnail", height: '50', width: '50' %></td>
-    <% else %>
-    <td>Not Ranked</td>
-    <% end %>
+    <th>Position</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email Address</th>
+    <th>Points</th>
+    <th>Rank</th>
   </tr>
-</br>
+</thead>
+<% @count = 1 %>
+<% @users.each do |user| %>
+ <tbody>
+     <tr>
+       <td><%= @count %></td>
+       <% @count += 1 %>
+      <td><%= user.fname %></td>
+      <td><%= user.lname %></td>
+      <td><%= user.email %></td>
+      <% if user.point != nil %>
+      <td><%= user.point %></td>
+      <%else%>
+      <td><%=0 %></td>
+      <%end%>
+
+      <% if user.rankicon %>
+      <td><%= image_tag user.rankicon, class: "img-thumbnail", height: '50', width: '50' %></td>
+      <% else %>
+      <td>Not Ranked </td>
+      <% end %>
+    </tr>
+
+ </tbody>
+
 <% end %>
