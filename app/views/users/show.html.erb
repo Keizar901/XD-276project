@@ -3,7 +3,7 @@
   <%= image_tag @user.avatar.url(:thumb) %>
   <%= @user.fname %>
   <% if @user.rankicon %>
-  <%= image_tag @user.rankicon, class: "img-thumbnail" %>
+  <%= image_tag @user.rankicon, class: "img-thumbnail", height: '70', width: '70' %>
   <% end %>
 </h1>
 

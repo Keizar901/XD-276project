@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'random/accept'
   get 'random/success'
+  get 'random/leaderboard'
   # random addpoints function
   get 'random/addpoints'
   post 'random/addpoints'

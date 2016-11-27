@@ -76,29 +76,29 @@ class RandomController < ApplicationController
       if params[:notatdest]
       @err_msg = "You are not at the destination"
       end
-      
-      
+
+
 
     end
-    
-    
+
+
     def success
     end
-    
+
     def addpoints
       @current_user = current_user
       @points =  @current_user.point + 5
       @current_user.update_attribute(:point, @points)
 
-      if @current_user.point <= 5
+      if @current_user.point < 10
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/BMfKmgt.png")
-      elsif @current_user.point <= 20
+      elsif @current_user.point < 30
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/4rr3XdX.png")
-      elsif @current_user.point <= 40
+      elsif @current_user.point < 60
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/KghhtvY.png")
-      elsif @current_user.point <= 60
+      elsif @current_user.point < 100
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/XnP3LVG.png")
-      elsif @current_user.point <= 80
+      elsif @current_user.point < 150
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/fmu3EDU.png")
       else
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/JNg57gR.png")
@@ -122,10 +122,14 @@ class RandomController < ApplicationController
 
 
       redirect_to controller: 'users', action: 'show', id: @current_user.id
-      
-      
+
+
     end
 
-      
+    def leaderboard
+      @users = User.all.order('point DESC')
+    end
+
+
     helper_method :distance_between
   end
