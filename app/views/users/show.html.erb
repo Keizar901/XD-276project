@@ -1,13 +1,13 @@
 <% provide(:title, @user.fname) %>
 <h1>
-  <%= gravatar_for @user %>
+  <%= image_tag @user.avatar.url(:thumb) %>
   <%= @user.fname %>
   <% if @user.rankicon %>
   <%= image_tag @user.rankicon, class: "img-thumbnail" %>
   <% end %>
 </h1>
 
-<%= @user.fname %>, <%= @user.email %>
+<%= image_tag @user.avatar.url(:thumb) %>, <%= @user.fname %>, <%= @user.email %>
 <h1>Your have <%= @user.point %> points</h1>
 
 
@@ -19,13 +19,9 @@
       <% if (location.imgurl) %>
         <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
       <% else %>
-      
+
         <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
       <% end %>
       <p>Visited At <%= location.timestamp %></p>
   <br />
 <% end %>
-
-
-
-

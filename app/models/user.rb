@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :locations
+  has_attached_file :avatar, styles:{ large: "600x600>", medium: "300x300>", thumb: "100x100>" }
+	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
 	attr_accessor :remember_token, :activation_token, :reset_token
 
 	before_save { email.downcase! }
