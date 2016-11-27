@@ -1,111 +1,34 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-
-#one:
-#  fname: MyString
-#  lname: MyString
-#  email: MyString
-#  password_digest: MyString
-#  point: 1
-#  location_id: 1
-
-#two:
-#  fname: MyString
-#  lname: MyString
-#  email: MyString
-#  password_digest: MyString
-#  point: 1
-#  location_id: 1
-
-michael:
-  fname: Michael
-  lname: Example
-  email: michael@example.com
-  password_digest: <%= User.digest('password') %>
-  point: 1
-  location_id: 1
-  activated: true
-  activated_at: <%= Time.zone.now %>
-
-archer:
-  fname: Sterling
-  lname: Archer
-  email: duchess@example.gov
-  password_digest: <%= User.digest('password') %>
-  point: 1
-  location_id: 1
-  activated: true
-  activated_at: <%= Time.zone.now %>
-
-
-admin1:
-  fname: admin1
-  lname: ad
-  email: admin1@example.com
-  password_digest: <%= User.digest('password') %>
-  point: 1
-  location_id: 1
-
-
-admin2:
-  fname: admin2
-  lname: ad
-  email: admin2@example.com
-  password_digest: <%= User.digest('password') %>
-  point: 1
-  location_id: 1
-
-Example User9:
-  fname: Example User9
-  lname: Example User
-  email: sample9@sample.org
+Admin:
+  fname: Admin
+  lname: Admin
+  email: admin@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
   admin: true
 
-Example User2:
-  fname: Example User2
-  lname: Example User
-  email: sample2@sample.org
+User1:
+  fname: User1
+  lname: User1
+  email: ex1@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
 
-Example User3:
-  fname: Example User3
-  lname: Example User
-  email: sample3@sample.org
+User3:
+  fname: User2
+  lname: User2
+  email: ex2@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
 
-Example User4:
-  fname: Example User4
-  lname: Example User
-  email: sample4@sample.org
+User4:
+  fname: User3
+  lname: User3
+  email: ex3@sample.org
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
-  activated: true
-  activated_at: <%= Time.zone.now %>
-
-malory:
-  fname: Malory
-  lname: Archer
-  email: boss@example.gov
-  password_digest: <%= User.digest('password') %>
-  point: 1
-  location_id: 1
-  activated: true
-  activated_at: <%= Time.zone.now %>
-
-<% 30.times do |n| %>
-user_<%= n %>:
-  fname:  <%= "User #{n}" %>
-  lname:  <%= "User #{n}" %>
-  email: <%= "user-#{n}@example.com" %>
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
-<% end %>
