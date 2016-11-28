@@ -45,10 +45,23 @@
       <% end %>
       <p>Visited At <%= location.timestamp %></p>
 
+
+
   <br />
 <% end %>
+
+
 <br />
 
+ <div class="col-md-8">
+    <% if @user.reviews.any? %>
+      <h3>Reviews (<%= @user.reviews.count %>)</h3>
+      <ol class="reviews">
+        <%= render @reviews %>
+      </ol>
+      <%= will_paginate @reviews %>
+    <% end %>
+  </div>
 
 
 

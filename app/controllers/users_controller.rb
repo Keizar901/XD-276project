@@ -9,10 +9,16 @@ class UsersController < ApplicationController
   def index
     @users = User.where(activated: true).paginate(:per_page => 3, :page => params[:page]).order('created_at DESC')
 
+    
   end
 
   def show
     @user = User.find(params[:id])
+    @reviews = @user.reviews.paginate(page: params[:page])
+    @locations = @user.locations.paginate(page: params[:page])
+
+
+
     redirect_to root_url and return unless @user.activated?
   end
 
@@ -69,14 +75,7 @@ class UsersController < ApplicationController
 
     # Before filters
 
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+    
 
     # Confirms the correct user.
     def correct_user

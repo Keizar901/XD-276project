@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :locations
+  has_many :reviews, dependent: :destroy
   has_attached_file :avatar, styles:{ large: "600x600>", medium: "300x300>", thumb: "100x100>" }
 	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
@@ -78,6 +79,12 @@ class User < ApplicationRecord
   # Returns true if a password reset has expired.
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # Defines a proto-feed.
+  # See "Following users" for the full implementation.
+  def feed
+    Review.where("user_id = ?", id)
   end
 
 

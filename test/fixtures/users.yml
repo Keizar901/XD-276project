@@ -17,7 +17,7 @@ User1:
   point: 1
   location_id: 1
 
-User3:
+User2:
   fname: User2
   lname: User2
   email: ex2@sample.org
@@ -25,7 +25,7 @@ User3:
   point: 1
   location_id: 1
 
-User4:
+User3:
   fname: User3
   lname: User3
   email: ex3@sample.org
