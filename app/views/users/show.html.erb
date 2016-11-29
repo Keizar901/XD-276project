@@ -2,6 +2,9 @@
 <h1>
   <%= image_tag @user.avatar.url(:thumb) %>
   <%= @user.fname %>
+  <% if @user.rankicon %>
+  <%= image_tag @user.rankicon, class: "img-thumbnail", height: '70', width: '70' %>
+  <% end %>
 </h1>
 
 <%= image_tag @user.avatar.url(:thumb) %>, <%= @user.fname %>, <%= @user.email %>
