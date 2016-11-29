@@ -1,12 +1,41 @@
 <% provide(:title, "RestaRun") %>
 <div class="contrainer">
 
+  <!-- error messages -->
   <% if @err_msg %>
-    <div class="alert alert-danger" role="alert">
-      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <!-- this message will appear if there's an error passed from controller -->
+    <div class="alert alert-danger" role="alert" id="error-message">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       <%= @err_msg %>
     </div>
+  <% else %>
+    <!-- this message will always appear at the beginning
+         and will be replaced by success or fail message once getLocation() is done -->
+    <div class="alert alert-info" role="alert" id="wait-message">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      Please wait, we're retrieving your location...
+    </div>
   <% end %>
+
+  <!-- this message will appear if one of the following conditions is true
+      (1) location permission is denied by user
+      (2) position is not available (e.g. https not used)
+      (3) it takes too long get location (e.g. unstable connection?)  -->
+  <div class="alert alert-danger" role="alert" id="fail-message" style="display: none">
+    <strong>We can't access your location. Try the following steps:</strong>
+    <ul>
+      <li>Allow our app to access location</li>
+      <li>Use https:// instead of just http://</li>
+      <li>Refresh this page and try again.</li>
+    </ul>
+  </div>
+
+  <!-- this message will appear when location is ready -->
+  <div class="alert alert-success" role="alert" id="success-message" style="display: none">
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    Location is now available!
+  </div>
+
 
   <%= form_tag random_search_path, class: "form-inline" do %>
     <div class="form-group">
@@ -15,11 +44,11 @@
       <%= select_tag :distance,
        options_for_select([['10', 800], ['20', 1600], ['30', 2400], ['60', 4800]]),
        class: "form-control" %>
-    
 
-    <%= submit_tag 'Random', class: "btn btn-primary" %>
+
+    <%= submit_tag 'Random', class: "btn btn-primary", disabled: true, id: "submit" %>
   <% end %>
-</div>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -34,16 +63,45 @@
   }
 
   // setGeoCookie - creates a cookie to store user location
+  //              - get called when location is available
   function setGeoCookie(position)
   {
+    document.getElementById("submit").disabled = false; // enable submit button
+
+    // remove all error messages
+    var err_msg = document.getElementById("error-message");
+    var wait_msg = document.getElementById("wait-message");
+    if (err_msg != null) {
+      err_msg.style.display = "none";
+    }
+    if (wait_msg != null) {
+      wait_msg.style.display = "none";
+    }
+
+    // show success message
+    document.getElementById("success-message").style.display = "block"
+
+    // save location as cookie
     var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
     document.cookie = "lat_lng=" + escape(cookie_val);
   }
 
-  // handleError - gets called when geolocation permission is denied by user
+  // handleError - gets called when we can't get location
+  //             - err.code: 1 = permission denied, 2 = pos unavailable, 3 = timeout
   function handleError(err)
   {
-     // err.code: 1 = permission denied, 2 = pos unavailable, 3 = timeout
+     // remove all error messages
+     var err_msg = document.getElementById("error-message");
+     var wait_msg = document.getElementById("wait-message");
+     if (err_msg != null) {
+       err_msg.style.display = "none";
+     }
+     if (wait_msg != null) {
+       wait_msg.style.display = "none";
+     }
+
+     // show fail message
+     document.getElementById("fail-message").style.display = "block"
   }
 
   getLocation(); // Ask for user location
