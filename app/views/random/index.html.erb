@@ -2,11 +2,28 @@
 <div class="contrainer">
 
   <% if @err_msg %>
-    <div class="alert alert-danger" role="alert">
-      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <div class="alert alert-danger" role="alert" id="error-message">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       <%= @err_msg %>
     </div>
+  <% else %>
+    <div class="alert alert-info" role="alert" id="wait-message">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      Please wait, we're retrieving your location...
+    </div>
   <% end %>
+
+  <div class="alert alert-danger" role="alert" id="fail-message" style="display: none">
+    <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+    We can't access your location. Make sure the address starts with <strong>https://</strong>. Refresh the page and try again.
+  </div>
+
+  <div class="alert alert-success" role="alert" id="success-message" style="display: none">
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    Location is now available!
+  </div>
+
+
 
   <%= form_tag random_search_path, class: "form-inline" do %>
     <div class="form-group">
@@ -15,9 +32,9 @@
       <%= select_tag :distance,
        options_for_select([['10', 800], ['20', 1600], ['30', 2400], ['60', 4800]]),
        class: "form-control" %>
-    
 
-    <%= submit_tag 'Random', class: "btn btn-primary" %>
+
+    <%= submit_tag 'Random', class: "btn btn-primary", disabled: true, id: "submit" %>
   <% end %>
 </div>
 </div>
@@ -36,6 +53,19 @@
   // setGeoCookie - creates a cookie to store user location
   function setGeoCookie(position)
   {
+    // show message
+    document.getElementById("submit").disabled = false;
+    var err_msg = document.getElementById("error-message");
+    var wait_msg = document.getElementById("wait-message");
+    if (err_msg != null) {
+      err_msg.style.display = "none";
+    }
+    if (wait_msg != null) {
+      wait_msg.style.display = "none";
+    }
+    document.getElementById("success-message").style.display = "block"
+
+    // save location as cookie
     var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
     document.cookie = "lat_lng=" + escape(cookie_val);
   }
@@ -44,6 +74,15 @@
   function handleError(err)
   {
      // err.code: 1 = permission denied, 2 = pos unavailable, 3 = timeout
+     var err_msg = document.getElementById("error-message");
+     var wait_msg = document.getElementById("wait-message");
+     if (err_msg != null) {
+       err_msg.style.display = "none";
+     }
+     if (wait_msg != null) {
+       wait_msg.style.display = "none";
+     }
+     document.getElementById("fail-message").style.display = "block"
   }
 
   getLocation(); // Ask for user location
