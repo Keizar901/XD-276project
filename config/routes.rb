@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'random/accept'
   get 'random/success'
+  get 'random/leaderboard'
   # random addpoints function
   get 'random/addpoints'
   post 'random/addpoints'
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
 
   post '/signup',  to: 'users#create'
 
-
+  get 'users/login'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

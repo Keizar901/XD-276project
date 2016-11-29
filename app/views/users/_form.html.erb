@@ -1,7 +1,7 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, html: { multipart: true } do |f| %>
   <%= render 'shared/error_messages', object: @user %>
 
-  <%= f.label :fname %>
+  <%= f.label :fname, "First name:"%>
   <%= f.text_field :fname, class: 'form-control' %>
 
   <%= f.label :lname, "Last name:" %>
@@ -15,6 +15,10 @@
 
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   <br>
-  <%= f.submit yield(:button_text), class: "btn btn-default" %>
 <% end %>
