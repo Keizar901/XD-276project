@@ -24,7 +24,7 @@ def setup
 
   test "should redirect destroy for wrong review" do
     log_in_as(users(:Admin))
-    review = reviews(:User1)
+    review = reviews(:tea)
     assert_no_difference 'Review.count' do
       delete review_path(review)
     end

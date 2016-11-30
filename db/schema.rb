@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127204447) do
+ActiveRecord::Schema.define(version: 20161129220542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "Measurements", force: :cascade do |t|
-    t.string   "measurement_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -29,13 +23,16 @@ ActiveRecord::Schema.define(version: 20161127204447) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ingredients", force: :cascade do |t|
-    t.integer  "ingredient_id"
-    t.integer  "recipe_id"
-    t.string   "ingredient_name"
-    t.string   "web_link"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  create_table "d_semesters", force: :cascade do |t|
+    t.string   "dSemesterSeasons"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "d_years", force: :cascade do |t|
+    t.string   "dYearNumber"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "locations", force: :cascade do |t|
@@ -50,36 +47,14 @@ ActiveRecord::Schema.define(version: 20161127204447) do
     t.datetime "timestamp"
   end
 
-  create_table "measurements", force: :cascade do |t|
-    t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "people", force: :cascade do |t|
-    t.string   "pname"
-    t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "recipe_ratings", force: :cascade do |t|
-    t.integer  "recipe_id"
-    t.integer  "user_id"
-    t.string   "comment"
-    t.integer  "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.integer  "recipe_id"
-    t.integer  "user_id"
-    t.string   "recipe_name"
-    t.string   "instructions"
-    t.integer  "complexity"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+    t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -89,54 +64,6 @@ ActiveRecord::Schema.define(version: 20161127204447) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.string   "tag_name"
-    t.boolean  "approved"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tags_recipes", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.integer  "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "things", force: :cascade do |t|
-    t.string   "tname"
-    t.text     "description"
-    t.integer  "person_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "tokimons", force: :cascade do |t|
-    t.string   "tname"
-    t.float    "weight"
-    t.float    "height"
-    t.integer  "fly"
-    t.integer  "fight"
-    t.integer  "fire"
-    t.integer  "water"
-    t.integer  "electric"
-    t.integer  "ice"
-    t.integer  "total"
-    t.integer  "trainer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "colour"
-    t.integer  "psychic"
-  end
-
-  create_table "trainers", force: :cascade do |t|
-    t.string   "pname"
-    t.integer  "level"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -159,14 +86,7 @@ ActiveRecord::Schema.define(version: 20161127204447) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-  end
-
-  create_table "widgets", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "stock"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
   add_foreign_key "reviews", "users"

@@ -16,12 +16,14 @@ def setup
     assert_no_difference 'Review.count' do
       post reviews_path, params: { review: { content: "" } }
     end
+
     assert_select 'div#error_explanation'
     # Valid submission
     content = "This review is valid."
     assert_difference 'Review.count', 1 do
       post reviews_path, params: { review: { content: content } }
     end
+
     assert_redirected_to root_url
     follow_redirect!
     assert_match content, response.body
@@ -34,9 +36,9 @@ def setup
     # Visit different user (no delete links)
     get user_path(users(:User1))
     assert_select 'a', text: 'delete', count: 0
-  end
+  #end
 
-  test "micropost sidebar count" do
+  test "review sidebar count" do
     log_in_as(@user)
     get root_path
     assert_match "#{FILL_IN} reviews", response.body

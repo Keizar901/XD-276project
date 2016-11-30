@@ -85,4 +85,34 @@ def setup
     end
   end
 
+  test "should follow and unfollow a user" do
+    Admin = users(:Admin)
+    User1  = users(:User1)
+    assert_not Admin.following?(User1)
+    Admin.follow(User1)
+    assert Admin.following?(User1)
+    assert User1.followers.include?(Admin)
+    Admin.unfollow(User1)
+    assert_not Admin.following?(User1)
+  end
+
+
+test "feed should have the right posts" do
+    Admin = users(:Admin)
+    User1  = users(:User1)
+    User2    = users(:User2)
+    # Posts from followed user
+    User2.reviews.each do |post_following|
+      assert Admin.feed.include?(post_following)
+    end
+    # Posts from self
+    Admin.reviews.each do |post_self|
+      assert Admin.feed.include?(post_self)
+    end
+    # Posts from unfollowed user
+    User1.reviews.each do |post_unfollowed|
+      assert_not Admin.feed.include?(post_unfollowed)
+    end
+  end
 end
+
