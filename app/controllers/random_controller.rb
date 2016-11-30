@@ -9,14 +9,6 @@ class RandomController < ApplicationController
   end
 
   def search
-    secrets = Rails.application.secrets
-
-    client = Yelp::Client.new({consumer_key: secrets.yelp_consumer_key,
-      consumer_secret: secrets.yelp_consumer_secret,
-      token: secrets.yelp_token,
-      token_secret: secrets.yelp_token_secret
-      })
-
       @distance = params[:distance]
       if @distance
         cookies[:distance] = @distance
@@ -34,7 +26,7 @@ class RandomController < ApplicationController
         @user_lng = lat_lng[1]
         pref = { term: 'restaurants', radius_filter: @distance }
         coordinates = { latitude: @user_lat, longitude: @user_lng }
-        results = client.search_by_coordinates(coordinates, pref)
+        results = Yelp.client.search_by_coordinates(coordinates, pref)
         buses = results.businesses
 
         # if there's no businesses near user, redirect to index
