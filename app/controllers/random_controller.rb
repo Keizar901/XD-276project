@@ -40,6 +40,7 @@ class RandomController < ApplicationController
           @bus_lng = bus.location.coordinate.longitude
           @img_url = bus.image_url
           @img_placeholder = 'http://bit.ly/2fkkakw'
+          @rating = bus.rating
         end
 
       end
