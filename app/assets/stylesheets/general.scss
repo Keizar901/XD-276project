@@ -249,3 +249,11 @@ input {
     border-bottom: 1px solid #880e4f;
   }
 }
+
+.star {
+  transition: all .15s ease-in-out;
+}
+
+.star:hover {
+  transform: scale(2.0);
+}
