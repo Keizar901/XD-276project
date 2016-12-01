@@ -249,3 +249,8 @@ input {
     border-bottom: 1px solid #880e4f;
   }
 }
+
+// center content in table row vertically
+.table tbody>tr>td.vert-align{
+    vertical-align: middle;
+}
