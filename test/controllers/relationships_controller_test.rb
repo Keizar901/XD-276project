@@ -1,11 +1,4 @@
-require 'test_helper'
-
-class RelationshipsControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
-
-  require 'test_helper'
+require 'test_helper'  
 
 class RelationshipsControllerTest < ActionDispatch::IntegrationTest
 
@@ -22,5 +15,4 @@ class RelationshipsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to login_url
   end
-end
 end
