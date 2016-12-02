@@ -39,6 +39,7 @@ gem 'faker',          '1.6.6'
 gem 'gmaps4rails'
 
 gem 'paperclip', '~> 5.0.0'
+gem 'aws-sdk', '~> 2'
 
 gem 'rails-controller-testing'
 
