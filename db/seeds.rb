@@ -33,3 +33,5 @@ User.create!(fname:  "User3",
              password:              "user3user3",
              password_confirmation: "user3user3",
              activated: true)
+
+users = User.order(:created_at).take(6)

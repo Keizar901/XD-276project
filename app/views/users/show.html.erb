@@ -1,14 +1,34 @@
 <% provide(:title, @user.fname) %>
 <h1>
+
   <%= image_tag @user.avatar.url(:thumb) %>
   <%= @user.fname %>
   <% if @user.rankicon %>
   <%= image_tag @user.rankicon, class: "img-thumbnail", height: '70', width: '70' %>
   <% end %>
+
 </h1>
 
-<%= image_tag @user.avatar.url(:thumb) %>, <%= @user.fname %>, <%= @user.email %>
 <h1>Your have <%= @user.point %> points</h1>
+
+
+
+<h2 align="left">Locations visited:</h2>
+
+<% @user.locations.each do |location| %>
+<div class="col-xs-6 col-lg-3">
+  <%=location.name %>
+      <% if (location.imgurl) %>
+        <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
+      <% else %>
+
+        <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
+      <% end %>
+      <p>Visited At <%= location.timestamp %></p>  
+</div>
+<% end %>
+
+<br />
 
 <table class=" table table-striped sortable">
   <thead>
@@ -34,21 +54,24 @@
     </tr>
 
  </tbody>
+ </table>
 
-<h2 align="left">Locations visited:</h2>
+<section class="stats">
+  <%= render 'shared/stats' %>
+</section>
 
-<% @user.locations.each do |location| %>
-<div class="col-xs-6 col-lg-3">
-  <%=location.name %>
-      <% if (location.imgurl) %>
-        <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
-      <% else %>
 
-        <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
-      <% end %>
-      <p>Visited At <%= location.timestamp %></p>
+ <div class="col-md-8">
+     <%= render 'follow_form' if logged_in? %>
+    <% if @user.reviews.any? %>
+      <h3>Reviews (<%= @user.reviews.count %>)</h3>
+      <ol class="reviews">
+        <%= render @reviews %>
+      </ol>
+      <%= will_paginate @reviews %>
+    <% end %>
+  </div>
 
-  <br />
-</div>
-<% end %>
-<br />
+
+
+
