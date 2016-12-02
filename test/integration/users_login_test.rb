@@ -2,6 +2,11 @@ require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
 
+def setup
+  @user = users(:Admin)
+  log_in_as(@user)
+end
+
   test "login with invalid information" do
     get login_path
     assert_template 'sessions/new'
@@ -41,7 +46,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   end
 
   test "login without remembering" do
-    log_in_as(@user, remember_me: '0')
+    log_in_as(@user, remember_me: '')
     assert_nil cookies['remember_token']
   end
 
