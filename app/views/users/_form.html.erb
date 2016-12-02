@@ -1,5 +1,5 @@
 <%= form_for @user, html: { multipart: true } do |f| %>
-  <%= render 'shared/error_messages', object: @user %>
+  <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :fname, "First name:"%>
   <%= f.text_field :fname, class: 'form-control' %>
