@@ -9,6 +9,11 @@ $gray-medium-light: #eaeaea;
 
 body {
   // padding-top: 60px;
+  background-image: url(http://i.imgur.com/Ej5xexI.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center bottom;
+  padding-bottom: 200px;
 }
 
 section {
@@ -26,10 +31,10 @@ textarea {
   }
 }
 
-
-
 .container {
-  background-color: #F9FAFF;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #FFF;
   border-color: #880e4f;
 }
 .container-fluid {

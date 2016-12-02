@@ -21,7 +21,7 @@
   </thead>
 
  <tbody>
-  
+
      <tr>
       <td><%= @user.fname %></td>
       <td><%= @user.lname %></td>
@@ -32,13 +32,13 @@
       <td><%=0 %>
       <%end%>
     </tr>
-   
+
  </tbody>
 
 <h2 align="left">Locations visited:</h2>
 
 <% @user.locations.each do |location| %>
-
+<div class="col-xs-6 col-lg-3">
   <%=location.name %>
       <% if (location.imgurl) %>
         <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
@@ -49,9 +49,6 @@
       <p>Visited At <%= location.timestamp %></p>
 
   <br />
+</div>
 <% end %>
 <br />
-
-
-
-
