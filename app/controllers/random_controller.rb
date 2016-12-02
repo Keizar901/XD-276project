@@ -83,9 +83,7 @@ class RandomController < ApplicationController
       @points =  @current_user.point + 5
       @current_user.update_attribute(:point, @points)
 
-      if @current_user.point < 10
-        @current_user.update_attribute(:rankicon, "http://i.imgur.com/BMfKmgt.png")
-      elsif @current_user.point < 30
+      if @current_user.point < 30
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/4rr3XdX.png")
       elsif @current_user.point < 60
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/KghhtvY.png")
@@ -93,8 +91,10 @@ class RandomController < ApplicationController
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/XnP3LVG.png")
       elsif @current_user.point < 150
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/fmu3EDU.png")
-      else
+      elsif @current_user.point < 200
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/JNg57gR.png")
+      else
+        @current_user.update_attribute(:rankicon, "http://i.imgur.com/Gi57bp4.png")
       end
 
       # change the flahs text in application.html.erb

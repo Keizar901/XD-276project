@@ -262,3 +262,8 @@ input {
 .star:hover {
   transform: scale(2.0);
 }
+
+// center content in table row vertically
+.table tbody>tr>td.vert-align{
+    vertical-align: middle;
+}
