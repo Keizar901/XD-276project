@@ -1,10 +1,8 @@
 <% provide(:title, @user.fname) %>
 <h1>
-  <%= image_tag @user.avatar.url(:thumb) %>
-  <%= @user.fname %>
+    <%= @user.fname %>
 </h1>
 
-<%= image_tag @user.avatar.url(:thumb) %>, <%= @user.fname %>, <%= @user.email %>
 <h1>Your have <%= @user.point %> points</h1>
 
 <table class=" table table-striped sortable">
@@ -31,6 +29,7 @@
     </tr>
    
  </tbody>
+ </table>
 
 <h2 align="left">Locations visited:</h2>
 
