@@ -51,6 +51,8 @@ gem 'yelp', require: 'yelp'
 # Facebook login
 gem 'omniauth-facebook'
 
+gem 'figaro'
+
 # Social login buttons (disable for now)
 # gem 'bootstrap-social-rails'
 # gem 'font-awesome-rails'

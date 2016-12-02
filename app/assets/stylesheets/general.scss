@@ -8,7 +8,12 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  // padding-top: 60px;
+  background-image: url(http://i.imgur.com/Ej5xexI.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center bottom;
+  padding-bottom: 200px;
 }
 
 section {
@@ -26,10 +31,10 @@ textarea {
   }
 }
 
-
-
 .container {
-  background-color: #fce4ec;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #FFF;
   border-color: #880e4f;
 }
 .container-fluid {
@@ -248,6 +253,14 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid #880e4f;
   }
+}
+
+.star {
+  transition: all .15s ease-in-out;
+}
+
+.star:hover {
+  transform: scale(2.0);
 }
 
 // center content in table row vertically
