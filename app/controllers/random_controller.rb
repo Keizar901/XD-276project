@@ -4,7 +4,7 @@ class RandomController < ApplicationController
 
     if logged_in?
     @review  = current_user.reviews.build
-    @feed_items = current_user.feed.paginate(page: params[:page])
+    @feed_items = current_user.feed.paginate(:per_page => 3, :page => params[:page]).order('created_at DESC')
     end
 
 

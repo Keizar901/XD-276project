@@ -16,9 +16,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reviews = @user.reviews.paginate(page: params[:page])
-    @locations = @user.locations.paginate(page: params[:page])
-
+    @reviews = @user.reviews.paginate(:per_page => 3, :page => params[:page]).order('created_at DESC')
+    @locations = @user.locations.paginate(:per_page => 3, :page => params[:page]).order('created_at DESC')
+@feed_items = current_user.feed.paginate(:per_page => 3, :page => params[:page]).order('created_at DESC')
 
 
     redirect_to root_url and return unless @user.activated?

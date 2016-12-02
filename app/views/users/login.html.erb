@@ -1,6 +1,1 @@
-<% if current_user.admin? %>
-	<h1>Display all <%= link_to "Users", users_path %></h1>	
-<%else%>           
-	
-	<h1>Display all <%= link_to "Users", users_path %></h1>	
-<% end %>
+<% provide(:title, "Log in") %>
