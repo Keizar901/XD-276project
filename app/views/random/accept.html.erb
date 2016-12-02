@@ -3,26 +3,26 @@
 
 <!-- Display -->
 <div class="col-md-6">
-      <p class="lead">You have accepted the challenge at: </p>
-      <h1><%= @name %></h1>
-      <% if (@img_url) %>
-      <p> <%= image_tag @img_url, class: "img-thumbnail" %> </p>
-      <% else %>
-      <p><%= image_tag @img_placeholder, class: "img-thumbnail" %></p>
-      <% end %>
+      <p>You have accepted the challenge at: </p>
+      <div class="text-center">
+        <h1 style="color: #FE6C6C"><%= @name %></h1>
+        <% if (@img_url) %>
+        <p> <%= image_tag @img_url, class: "img-thumbnail" %> </p>
+        <% else %>
+        <p><%= image_tag @img_placeholder, class: "img-thumbnail" %></p>
+        <% end %>
 
-      <p class="lead"  id= "confirm"></p>
-      <% if logged_in? %>
-        <%= button_to "Check In Button", random_addpoints_path(:destlat => @bus_lat, :destlong => @bus_lng, :name => @name, 
-        :imgurl => @img_url), :disabled => true, class: "btn btn-success", id: 'success' %>
-      <% end %>
+        <p class="lead" id= "confirm"></p>
+          <%= button_to "Check In Button", random_addpoints_path(:destlat => @bus_lat, :destlong => @bus_lng, :name => @name,
+          :imgurl => @img_url), :disabled => true, class: "btn btn-success", id: 'success' %>
+      </div>
 </div>
 
 
 <div class="col-md-6">
       <!-- Map -->
       <div class="embed-responsive embed-responsive-16by9">
-        <div id="directions" class="embed-responsive-item" style="border: 1px solid black"></div>
+        <div id="directions" class="embed-responsive-item" style="border: 4px solid #FFF"></div>
       </div>
 </div>
 
@@ -63,10 +63,10 @@
   var ulng = <%= @user_lng %>;
   var dlat = <%= @destlat %>;
   var dlong = <%= @destlong %>;
-  
+
   var p1 = new google.maps.LatLng(ulat, ulng);
   var p2 = new google.maps.LatLng(dlat,dlong);
-  
+
   var d = calcDistance(p1, p2);
 
 // distance range
@@ -119,10 +119,3 @@ handler.buildMap({ internal: {id: 'directions'}}, function(){
   directionsDisplay.setMap(handler.getMap());
 });
 </script>
-
-
-
-
-
-
-

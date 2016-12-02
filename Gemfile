@@ -39,6 +39,7 @@ gem 'faker',          '1.6.6'
 gem 'gmaps4rails'
 
 gem 'paperclip', '~> 5.0.0'
+gem 'aws-sdk', '~> 2'
 
 gem 'rails-controller-testing'
 
@@ -49,6 +50,8 @@ gem 'yelp', require: 'yelp'
 
 # Facebook login
 gem 'omniauth-facebook'
+
+gem 'figaro'
 
 # Social login buttons (disable for now)
 # gem 'bootstrap-social-rails'

@@ -9,14 +9,6 @@ class RandomController < ApplicationController
   end
 
   def search
-    secrets = Rails.application.secrets
-
-    client = Yelp::Client.new({consumer_key: secrets.yelp_consumer_key,
-      consumer_secret: secrets.yelp_consumer_secret,
-      token: secrets.yelp_token,
-      token_secret: secrets.yelp_token_secret
-      })
-
       @distance = params[:distance]
       if @distance
         cookies[:distance] = @distance
@@ -34,7 +26,7 @@ class RandomController < ApplicationController
         @user_lng = lat_lng[1]
         pref = { term: 'restaurants', radius_filter: @distance }
         coordinates = { latitude: @user_lat, longitude: @user_lng }
-        results = client.search_by_coordinates(coordinates, pref)
+        results = Yelp.client.search_by_coordinates(coordinates, pref)
         buses = results.businesses
 
         # if there's no businesses near user, redirect to index
@@ -48,6 +40,7 @@ class RandomController < ApplicationController
           @bus_lng = bus.location.coordinate.longitude
           @img_url = bus.image_url
           @img_placeholder = 'http://bit.ly/2fkkakw'
+          @rating = bus.rating
         end
 
       end
@@ -90,9 +83,7 @@ class RandomController < ApplicationController
       @points =  @current_user.point + 5
       @current_user.update_attribute(:point, @points)
 
-      if @current_user.point < 10
-        @current_user.update_attribute(:rankicon, "http://i.imgur.com/BMfKmgt.png")
-      elsif @current_user.point < 30
+      if @current_user.point < 30
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/4rr3XdX.png")
       elsif @current_user.point < 60
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/KghhtvY.png")
@@ -100,8 +91,10 @@ class RandomController < ApplicationController
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/XnP3LVG.png")
       elsif @current_user.point < 150
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/fmu3EDU.png")
-      else
+      elsif @current_user.point < 200
         @current_user.update_attribute(:rankicon, "http://i.imgur.com/JNg57gR.png")
+      else
+        @current_user.update_attribute(:rankicon, "http://i.imgur.com/Gi57bp4.png")
       end
 
       # change the flahs text in application.html.erb
