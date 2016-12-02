@@ -19,8 +19,9 @@ class User < ApplicationRecord
 
 	after_initialize :init_config
 	def init_config
-      self.point  ||= 0          #will set the default value of point only if it's nil
-    end
+      self.point  ||= 0
+      self.rankicon ||= "http://i.imgur.com/BMfKmgt.png"          #will set the default value of point only if it's nil
+  end
 
 
 	# Returns the hash digest of the given string.
