@@ -30,14 +30,10 @@ Rails.application.routes.draw do
 
   post '/signup',  to: 'users#create'
 
-  get 'users/login'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-
-  get 'geomap/index'
-  get 'geomap/directions'
 
   root  'random#index'
 

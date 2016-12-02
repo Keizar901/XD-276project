@@ -85,16 +85,6 @@ def setup
     end
   end
 
-  test "should follow and unfollow a user" do
-    Admin = users(:Admin)
-    User1  = users(:User1)
-    assert_not Admin.following?(User1)
-    Admin.follow(User1)
-    assert Admin.following?(User1)
-    assert User1.followers.include?(Admin)
-    Admin.unfollow(User1)
-    assert_not Admin.following?(User1)
-  end
 
 
 test "feed should have the right posts" do
@@ -115,4 +105,3 @@ test "feed should have the right posts" do
     end
   end
 end
-

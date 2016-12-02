@@ -8,6 +8,27 @@ Admin:
   point: 1
   location_id: 1
   admin: true
+  activated: true
+
+Admin1:
+  fname: Admin1
+  lname: Admin1
+  email: admin1@sample.org
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+  admin: true
+  activated: true
+
+Admin2:
+  fname: Admin2
+  lname: Admin2
+  email: admin2@sample.org
+  password_digest: <%= User.digest('password') %>
+  point: 1
+  location_id: 1
+  admin: true
+  activated: true
 
 User1:
   fname: User1
@@ -16,6 +37,7 @@ User1:
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
+  activated: true
 
 User2:
   fname: User2
@@ -24,7 +46,7 @@ User2:
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
-
+  activated: true
 User3:
   fname: User3
   lname: User3
@@ -32,3 +54,4 @@ User3:
   password_digest: <%= User.digest('password') %>
   point: 1
   location_id: 1
+  activated: true

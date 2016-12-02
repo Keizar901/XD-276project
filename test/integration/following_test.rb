@@ -38,14 +38,6 @@ test "should follow a user the standard way" do
     end
   end
 
-  test "should unfollow a user the standard way" do
-    @user.follow(@other)
-    relationship = @user.active_relationships.find_by(followed_id: @other.id)
-    assert_difference '@user.following.count', -1 do
-      delete relationship_path(relationship)
-    end
-  end
-
   test "should unfollow a user with Ajax" do
     @user.follow(@other)
     relationship = @user.active_relationships.find_by(followed_id: @other.id)
@@ -54,17 +46,6 @@ test "should follow a user the standard way" do
     end
   end
 
-test "feed on Home page" do
-    get root_path
-    @user.feed.paginate(page: 1).each do |review|
-      assert_match CGI.escapeHTML(FILL_IN), FILL_IN
-    end
-  end
 
 
 end
-
-
-
-
-

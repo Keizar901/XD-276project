@@ -1,4 +1,5 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<%= link_to current_user.avatar.url(:thumb) , current_user %>
+<%= image_tag current_user.rankicon, height: '70', width: '70' %>
 <h1><%= current_user.fname %></h1>
 <span><%= link_to "view my profile", current_user %></span>
 <span><%= pluralize(current_user.reviews.count, "review") %></span>

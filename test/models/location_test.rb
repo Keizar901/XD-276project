@@ -4,8 +4,10 @@ class LocationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-  test "User Id should be present" do
-    @user.fname = ""
-    assert_not @user.valid?
+  test "User fname not valid" do
+    @u = User.new
+    @u.fname = ""
+    @u.save
+    assert_not @u.valid?
   end
 end
