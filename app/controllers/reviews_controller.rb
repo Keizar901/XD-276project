@@ -7,7 +7,7 @@ before_action :correct_user,   only: :destroy
   	@review = current_user.reviews.build(review_params)
     if @review.save
       flash[:success] = "Review created!"
-      redirect_to root_url
+      redirect_to random_reviews_path
     else
       @feed_items = []
       render 'random/index'
@@ -17,7 +17,7 @@ before_action :correct_user,   only: :destroy
   def destroy
     @review.destroy
     flash[:success] = "Review deleted"
-    redirect_to request.referrer || root_url
+    redirect_to request.referrer || random_reviews_path
   end
 
   private
@@ -28,7 +28,7 @@ before_action :correct_user,   only: :destroy
 
     def correct_user
       @review = current_user.reviews.find_by(id: params[:id])
-      redirect_to root_url if @review.nil?
+      redirect_to random_reviews_path if @review.nil?
     end
 
 end

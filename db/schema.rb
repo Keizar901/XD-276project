@@ -70,20 +70,12 @@ ActiveRecord::Schema.define(version: 20161129220542) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.boolean  "admin",               default: false
+    t.string   "rankicon"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "rankicon"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-  end
-
-  create_table "widgets", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "stock"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_foreign_key "reviews", "users"
