@@ -1,11 +1,19 @@
 class RandomController < ApplicationController
 
   def index
+
+    if logged_in?
+    @review  = current_user.reviews.build
+    @feed_items = current_user.feed.paginate(page: params[:page])
+    end
+
+
     if params[:busnotfound]
       @err_msg = "Oops, there is no restaurants around you"
     elsif params[:lonotfound]
       @err_msg = "Your location is not available"
     end
+    
   end
 
   def search

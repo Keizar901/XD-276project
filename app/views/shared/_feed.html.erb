@@ -1,0 +1,8 @@
+<% if @feed_items %>
+  <ol class="reviews">
+    <%= render @feed_items %>
+  </ol>
+  <%= will_paginate @feed_items %>
+  <% else %>
+  <h3> You haven't added any review yet.</h3>
+<% end %>
