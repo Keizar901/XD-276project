@@ -98,4 +98,4 @@ production:
   <<: *default
   database: XD-276project_production
   username: XD-276project
-password: <%= ENV['XD-276PROJECT_DATABASE_PASSWORD'] %>
+  password: <%= ENV['XD-276PROJECT_DATABASE_PASSWORD'] %>
