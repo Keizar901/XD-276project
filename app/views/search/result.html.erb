@@ -28,7 +28,7 @@
       <tr>
         <td class="vert-align"><%= link_to "#{ r.fname } #{ r.lname }", user_path(r.id) %></td>
         <% if r.rankicon %>
-        <td class="vert-align"><%= image_tag r.rankicon, class: "img-thumbnail", height: '50', width: '50' %></td>
+        <td class="vert-align"><%= image_tag r.rankicon, height: '50', width: '50' %></td>
         <% else %>
         <td class="vert-align"> - </td>
         <% end %>

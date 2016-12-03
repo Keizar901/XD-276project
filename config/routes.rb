@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'random/addpoints'
   post 'random/addpoints'
 
+  get 'random/reviews'
   # post method for accept
   post 'random/accept'
 

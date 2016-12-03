@@ -13,7 +13,7 @@ class RandomController < ApplicationController
     elsif params[:lonotfound]
       @err_msg = "Your location is not available"
     end
-    
+
   end
 
   def search
@@ -129,6 +129,11 @@ class RandomController < ApplicationController
 
     def leaderboard
       @users = User.all.order('point DESC')
+    end
+
+    def reviews
+      @review  = current_user.reviews.build
+      @feed_items = current_user.feed.paginate(:per_page => 3, :page => params[:page]).order('created_at DESC')
     end
 
 
