@@ -7,10 +7,10 @@
         <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
       <% end %>
   
-    Posted <%= time_ago_in_words(location.created_at) %> ago.
+    Visited <%= time_ago_in_words(location.created_at) %> ago.
     <% if current_user?(location.user) %>
       <%= link_to "delete", location, method: :delete,
-                                       data: { confirm: "You sure?" } %>
+                                       data: { confirm: "Are you sure?" } %>
     <% end %>
   
   </div>
