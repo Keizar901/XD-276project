@@ -9,9 +9,9 @@ class RandomController < ApplicationController
 
 
     if params[:busnotfound]
-      @err_msg = "Oops, there is no restaurants around you"
+      @err_msg = "Oops, there is no restaurants around you!"
     elsif params[:lonotfound]
-      @err_msg = "Your location is not available"
+      @err_msg = "Your location is not available!"
     end
 
   end
@@ -75,7 +75,7 @@ class RandomController < ApplicationController
 
 
       if params[:notatdest]
-      @err_msg = "You are not at the destination"
+      @err_msg = "You are not at the destination!"
       end
 
 
@@ -106,7 +106,7 @@ class RandomController < ApplicationController
       end
 
       # change the flahs text in application.html.erb
-      flash[:notice] = "Congratulations!! You earn 5 points for finishing a challenge!"
+      flash[:success] = "Congratulations!! You earn 5 points for finishing a challenge!"
 
       @location = Location.new
       @destlat = params[:destlat]

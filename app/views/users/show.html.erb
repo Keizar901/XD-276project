@@ -47,9 +47,9 @@
       <ol class="reviews">
         <%= render @reviews %>
       </ol>
-      <p><%= will_paginate @reviews, :param_name => 'reviews_page'%></p>
-    <% end %>
-    
+      </br>
+      <h6><%= will_paginate @reviews, :param_name => 'reviews_page'%></h6>
+    <% end %>    
   </div>
 
 
@@ -59,7 +59,8 @@
       <ol class="reviews">
         <%= render @locations %>
       </ol>
-     <p><%= will_paginate @locations, :param_name => 'locations_page' %></p>
+      </br>
+     <h6><%= will_paginate @locations, :param_name => 'locations_page' %></h6>
     <% end %>
   </div>
 
