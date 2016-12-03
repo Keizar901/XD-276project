@@ -1,5 +1,5 @@
 <li id="review-<%= review.id %>">
-  <%= link_to gravatar_for(review.user, size: 50), review.user %>
+  <%= image_tag review.user.avatar.url(:thumb), size: 50 %>, review.user %>
   <span class="user"><%= link_to review.user.fname, review.user %></span>
   <span class="content"><%= review.content %></span>
   <span class="timestamp">
