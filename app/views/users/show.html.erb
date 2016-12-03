@@ -6,29 +6,7 @@
   <% if @user.rankicon %>
   <%= image_tag @user.rankicon, height: '70', width: '70' %>
   <% end %>
-
-</h1>
-
-<h1>Your have <%= @user.point %> points</h1>
-
-
-
-<h2 align="left">Locations visited:</h2>
-
-<% @user.locations.each do |location| %>
-<div class="col-xs-6 col-lg-3">
-  <%=location.name %>
-      <% if (location.imgurl) %>
-        <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
-      <% else %>
-
-        <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
-      <% end %>
-      <p>Visited At <%= location.timestamp %></p>
-</div>
-<% end %>
-
-<br />
+</h1> 
 
 <table class=" table table-striped sortable">
   <thead>
@@ -43,13 +21,13 @@
  <tbody>
 
      <tr>
-      <td><%= @user.fname %></td>
-      <td><%= @user.lname %></td>
-      <td><%= @user.email %></td>
+      <td class="vert-align"><%= @user.fname %></td>
+      <td class="vert-align"><%= @user.lname %></td>
+      <td class="vert-align"><%= @user.email %></td>
       <% if @user.point != nil %>
-      <td><%= @user.point %></td>
+      <td class="vert-align"><%= @user.point %></td>
       <%else%>
-      <td><%=0 %>
+      <td class="vert-align"><%=0 %>
       <%end%>
     </tr>
 
@@ -60,14 +38,31 @@
   <%= render 'shared/stats' %>
 </section>
 
+ 
 
  <div class="col-md-8">
-     <%= render 'follow_form' if logged_in? %>
+    <%= render 'follow_form' if logged_in? %>
     <% if @user.reviews.any? %>
       <h3>Reviews (<%= @user.reviews.count %>)</h3>
       <ol class="reviews">
         <%= render @reviews %>
       </ol>
-      <%= will_paginate @reviews %>
+      <p><%= will_paginate @reviews, :param_name => 'reviews_page'%></p>
+    <% end %>
+    
+  </div>
+
+
+  <div class="col-md-8">     
+    <% if @user.locations.any? %>
+      <h3>Locations visited (<%= @user.locations.count %>)</h3>
+      <ol class="reviews">
+        <%= render @locations %>
+      </ol>
+     <p><%= will_paginate @locations, :param_name => 'locations_page' %></p>
     <% end %>
   </div>
+
+ 
+
+  

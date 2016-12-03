@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129220542) do
+ActiveRecord::Schema.define(version: 20161203062012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,20 @@ ActiveRecord::Schema.define(version: 20161129220542) do
     t.string   "name"
     t.integer  "latitude"
     t.integer  "longitude"
-    t.string   "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "imgurl"
     t.string   "imgplaceholder"
     t.datetime "timestamp"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_locations_on_user_id", using: :btree
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string   "pname"
+    t.integer  "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -52,6 +60,14 @@ ActiveRecord::Schema.define(version: 20161129220542) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
+  create_table "things", force: :cascade do |t|
+    t.string   "tname"
+    t.text     "description"
+    t.integer  "person_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,5 +102,6 @@ ActiveRecord::Schema.define(version: 20161129220542) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "locations", "users"
   add_foreign_key "reviews", "users"
 end

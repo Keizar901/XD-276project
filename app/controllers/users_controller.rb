@@ -16,8 +16,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reviews = @user.reviews.paginate(:per_page => 3, :page => params[:page]).order('created_at DESC')
-    @locations = @user.locations.paginate(:per_page => 3, :page => params[:page]).order('created_at DESC')
+    @reviews = @user.reviews.paginate(:per_page => 3, :page => params[:reviews_page]).order('created_at DESC')
+    @locations = @user.locations.paginate(:per_page => 3, :page => params[:locations_page]).order('created_at DESC')
 
 
 

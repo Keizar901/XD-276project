@@ -1,7 +1,16 @@
-<li>
-  
-  <%= link_to location.name, location %>
-    
-  
+  <div class="col-xs-6 col-lg-4">
+  <%= location.name %>
+  <% if (location.imgurl) %>
+        <p> <%= image_tag location.imgurl, class: "img-thumbnail" %> </p>
+      <% else %>
 
-</li>
+        <p><%= image_tag 'http://bit.ly/2fkkakw', class: "img-thumbnail" %></p>
+      <% end %>
+  
+    Posted <%= time_ago_in_words(location.created_at) %> ago.
+    <% if current_user?(location.user) %>
+      <%= link_to "delete", location, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  
+  </div>

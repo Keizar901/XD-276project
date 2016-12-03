@@ -106,7 +106,7 @@ class RandomController < ApplicationController
       end
 
       # change the flahs text in application.html.erb
-      flash[:notice] = 'Congratulations!! You earn 5 points for finishing a challenge!'
+      flash[:notice] = "Congratulations!! You earn 5 points for finishing a challenge!"
 
       @location = Location.new
       @destlat = params[:destlat]
